@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/tgast/projects/vue-test/src'
+let g:netrw_dirhist_7='/home/tgast/projects/vue-test'
+let g:netrw_dirhist_6='/home/tgast/projects/vue-test/src'
+let g:netrw_dirhist_5='/home/tgast/projects/vue-test'
+let g:netrw_dirhist_4='/home/tgast/.config/nvim/autoload'
+let g:netrw_dirhist_3='/home/tgast/.config/nvim'
+let g:netrw_dirhist_2='/home/tgast/.config/nvim/autoload'
+let g:netrw_dirhist_1='/home/tgast/.config/nvim'

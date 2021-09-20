@@ -1,0 +1,8 @@
+alias ll="ls -lah"
+alias home="cd ~"
+alias h="cd ~"
+alias ..="cd .."
+alias projects="cd ~/projects"
+alias prj="cd ~/projects"
+alias win="cd /mnt/c/Users/tmgas/"
+
