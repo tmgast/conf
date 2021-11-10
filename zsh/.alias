@@ -1,3 +1,5 @@
+alias vi="nvim"
+alias vim="nvim"
 alias ll="ls -lah"
 alias home="cd ~"
 alias h="cd ~"

@@ -1,4 +1,4 @@
-"S pecify a directory for plugins
+" Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
@@ -39,6 +39,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'folke/tokyonight.nvim', {'branch': 'main' }
+
 " Initialize plugin system
 call plug#end()
 
@@ -55,7 +57,23 @@ inoremap <silent><expr> <Tab>
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()s
 
-let mapleader = ";"
+set exrc
+set noerrorbells
+set noswapfile
+set nobackup
+set scrolloff=8
+set hidden
+set tabstop=2 softtabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set nu
+set nowrap
+set smartcase
+
+colorscheme tokyonight
+
+let mapleader = " "
 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:NERDTreeMinimalUI = 1  " Hide help text
@@ -70,5 +88,6 @@ nnoremap Y yg$
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
+inoremap jj <ESC>
 
 autocmd VimEnter * NERDTree | wincmd p
