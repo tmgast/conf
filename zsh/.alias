@@ -8,3 +8,7 @@ alias projects="cd ~/projects"
 alias prj="cd ~/projects"
 alias win="cd /mnt/c/Users/tmgas/"
 
+alias gaa="git add --all"
+alias ga="git add ."
+alias gc="git commit -m"
+alias gp="git push"
