@@ -1,0 +1,7 @@
+{
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn",
+  "eslint.alwaysShowStatus": true,
+  "eslint.run": "onSave",
+  "eslint.autoFixOnSave": true
+}

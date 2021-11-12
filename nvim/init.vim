@@ -44,8 +44,6 @@ Plug 'folke/tokyonight.nvim', {'branch': 'main' }
 " Initialize plugin system
 call plug#end()
 
-let g:airlie#extensions#tabline#enabled = 1
-
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -71,6 +69,8 @@ set nu
 set nowrap
 set smartcase
 
+set wildignore=*/node_modules
+
 colorscheme tokyonight
 
 let mapleader = " "
@@ -79,15 +79,28 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 let g:NERDTreeMinimalUI = 1  " Hide help text
 let g:NERDTreeAutoDeleteBuffer = 1
 
+" show buffer tabs
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" Ctrl jump between buffers
+nnoremap <C-k> :bnext<CR>
+nnoremap <C-j> :bprevious<CR>
+
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>N :NERDTreeFind<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
 nnoremap Y yg$
+
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
 nnoremap J mzJ`z
+
+" better i-mode escape
 inoremap jj <ESC>
 
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p

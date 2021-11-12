@@ -1,3 +1,5 @@
+alias rl="source ~/.zshrc"
+
 alias vi="nvim"
 alias vim="nvim"
 alias ll="ls -lah"
@@ -8,7 +10,14 @@ alias projects="cd ~/projects"
 alias prj="cd ~/projects"
 alias win="cd /mnt/c/Users/tmgas/"
 
+alias au="apt update -y && apt upgrade -y"
+
 alias gaa="git add --all"
 alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
+alias gr="git reset --hard HEAD"
+
+alias vii="vi ~/.config/nvim/init.vim"
+alias via="vi ~/.config/zsh/.alias"
+alias viz="vi ~/.zshrc"
