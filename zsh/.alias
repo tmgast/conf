@@ -2,6 +2,8 @@ alias rl="source ~/.zshrc"
 
 alias vi="nvim"
 alias vim="nvim"
+
+alias pi="ssh pi@pi.hole"
 alias ll="ls -lah"
 alias home="cd ~"
 alias h="cd ~"

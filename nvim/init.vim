@@ -90,17 +90,23 @@ nnoremap <C-j> :bprevious<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>N :NERDTreeFind<CR>
 
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 nnoremap Y yg$
 
+" keep cursor in place when searching and line concat actions
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
 nnoremap J mzJ`z
+
+" shifting lines
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==i
+inoremap <C-k> <esc>:m .-2<CR>==i
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
 
 " better i-mode escape
 inoremap jj <ESC>
+vnoremap jj <ESC>
 
 " autocmd VimEnter * NERDTree | wincmd p
