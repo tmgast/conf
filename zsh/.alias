@@ -1,4 +1,5 @@
 alias rl="source ~/.zshrc"
+alias aptuu="apt update && apt upgrade -y"
 
 alias vi="nvim"
 alias vim="nvim"
@@ -23,3 +24,5 @@ alias gr="git reset --hard HEAD"
 alias vii="vi ~/.config/nvim/init.vim"
 alias via="vi ~/.config/zsh/.alias"
 alias viz="vi ~/.zshrc"
+
+alias tmux="TERM=xterm-256color tmux"

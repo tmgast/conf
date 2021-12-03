@@ -50,6 +50,20 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+" use 256 colors in terminal
+if !has("gui_running")
+  set t_Co=256
+  set termguicolors
+endif
+
+if(exists('+termguicolors'))
+  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+colorscheme tokyonight
+
+
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
@@ -69,9 +83,7 @@ set nu
 set nowrap
 set smartcase
 
-set wildignore=*/node_modules
-
-colorscheme tokyonight
+set wildignore=*/node_modules,coverage,*/dist
 
 let mapleader = " "
 
