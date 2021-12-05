@@ -44,6 +44,8 @@ Plug 'folke/tokyonight.nvim', {'branch': 'main' }
 " Initialize plugin system
 call plug#end()
 
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint']
+
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
