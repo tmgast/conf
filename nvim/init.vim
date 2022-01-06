@@ -40,6 +40,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'folke/tokyonight.nvim', {'branch': 'main' }
+Plug 'rebelot/kanagawa.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -63,8 +64,8 @@ if(exists('+termguicolors'))
   let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme tokyonight
-
+" colorscheme tokyonight
+colorscheme kanagawa
 
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
@@ -86,6 +87,8 @@ set nowrap
 set smartcase
 
 set wildignore=*/node_modules,coverage,*/dist
+
+let g:python3_host_prog="/bin/python3"
 
 let mapleader = " "
 
