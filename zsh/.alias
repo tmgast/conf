@@ -22,6 +22,7 @@ alias gp="git push"
 alias gr="git reset --hard HEAD"
 
 alias vii="vi ~/.config/nvim/init.vim"
+alias vil="vi ~/.config/nvim/conf.lua"
 alias via="vi ~/.config/zsh/.alias"
 alias viz="vi ~/.zshrc"
 
