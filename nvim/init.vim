@@ -145,3 +145,6 @@ nnoremap <leader>k :m .-2<CR>==
 " better i-mode escape
 inoremap jj <ESC>
 vnoremap jj <ESC>
+
+" show diagnostics
+nnoremap <S-e> :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
