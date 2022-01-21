@@ -117,6 +117,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 nnoremap <C-k> :bnext<CR>
 nnoremap <C-j> :bprevious<CR>
 
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 nnoremap Y yg$
 
 " Language Server configs
