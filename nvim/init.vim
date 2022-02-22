@@ -105,7 +105,7 @@ set smartcase
 
 set wildignore=*/node_modules,coverage,*/dist
 
-let g:python3_host_prog="/bin/python3"
+let g:python3_host_prog="/bin/python3.10"
 
 let mapleader = " "
 

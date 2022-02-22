@@ -1,8 +1,12 @@
 configstore
 node_modules
+bcml
 dconf
+enchant
+gedit
 GIMP
 gtk-3.0
+gtk-4.0
 nautilus
 nvim/plugged
 yarn
