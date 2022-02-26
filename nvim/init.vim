@@ -64,6 +64,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'folke/tokyonight.nvim', {'branch': 'main' }
 Plug 'rebelot/kanagawa.nvim'
 
+Plug 'kdheepak/lazygit.nvim'
+
+Plug 'github/copilot.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -148,6 +152,10 @@ nnoremap <leader>k :m .-2<CR>==
 " better i-mode escape
 inoremap jj <ESC>
 vnoremap jj <ESC>
+
+" dropping default tab mapping for copilot
+let g:copilot_no_tab_map = v:true
+imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
 
 " show diagnostics
 nnoremap <S-e> :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
