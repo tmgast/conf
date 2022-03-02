@@ -25,23 +25,19 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" choice themes
 Plug 'folke/tokyonight.nvim', {'branch': 'main' }
 Plug 'rebelot/kanagawa.nvim'
 
+" git
+Plug 'tpope/vim-fugitive'
 Plug 'kdheepak/lazygit.nvim'
 
+" magic
 Plug 'github/copilot.vim'
 
 " Initialize plugin system
 call plug#end()
-
-" let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint', 'coc-snippets']
-
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
 
 " use 256 colors in terminal
 if !has("gui_running")
@@ -68,9 +64,13 @@ set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
+set shiftround
 set nu
 set nowrap
 set smartcase
+set mouse=a
+set shell=zsh
+set spell
 
 set wildignore=*/node_modules,coverage,*/dist
 
@@ -118,7 +118,7 @@ nnoremap <leader>k :m .-2<CR>==
 inoremap jj <ESC>
 vnoremap jj <ESC>
 
-" dropping default tab mapping for copilot
+" use shift-tab mapping for copilot
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
 
