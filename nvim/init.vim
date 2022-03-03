@@ -2,6 +2,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Indexing and search
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Rust Lang
+Plug 'rust-lang/rust.vim'
+
 " Fuzzy Finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -75,6 +78,8 @@ set spell
 set wildignore=*/node_modules,coverage,*/dist
 
 let g:python3_host_prog="/bin/python3.10"
+
+let g:rustfmt_autosave = 1
 
 let mapleader = " "
 

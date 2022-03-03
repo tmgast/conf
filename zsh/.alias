@@ -26,4 +26,6 @@ alias vil="vi ~/.config/nvim/conf.lua"
 alias via="vi ~/.config/zsh/.alias"
 alias viz="vi ~/.zshrc"
 
+alias py="python3"
+
 alias tmux="TERM=xterm-256color tmux"
