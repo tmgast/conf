@@ -1,6 +1,8 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
+require('colorizer').setup()
+
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine

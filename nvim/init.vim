@@ -5,6 +5,15 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Rust Lang
 Plug 'rust-lang/rust.vim'
 
+" colors
+Plug 'cocopon/iceberg.vim'
+Plug 'cocopon/pgmnt.vim'
+Plug 'cocopon/inspecthi.vim'
+Plug 'cocopon/colorswatch.vim'
+
+" color-preview
+Plug 'norcalli/nvim-colorizer.lua'
+
 " Fuzzy Finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -31,6 +40,7 @@ Plug 'vim-airline/vim-airline-themes'
 " choice themes
 Plug 'folke/tokyonight.nvim', {'branch': 'main' }
 Plug 'rebelot/kanagawa.nvim'
+Plug 'tmgast/yokai.vim'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -41,6 +51,8 @@ Plug 'github/copilot.vim'
 
 " Initialize plugin system
 call plug#end()
+
+set laststatus=2
 
 " use 256 colors in terminal
 if !has("gui_running")
@@ -54,8 +66,9 @@ if(exists('+termguicolors'))
 endif
 
 " colorscheme tokyonight
-colorscheme kanagawa
-hi Normal guibg=NONE ctermbg=NONE
+" colorscheme kanagawa
+colorscheme yokai
+" hi Normal guibg=NONE ctermbg=NONE
 
 set exrc
 set noerrorbells
