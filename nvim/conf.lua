@@ -2,6 +2,7 @@
 local cmp = require'cmp'
 
 require('colorizer').setup()
+require('gitsigns').setup()
 
 cmp.setup({
   snippet = {

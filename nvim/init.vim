@@ -44,6 +44,8 @@ Plug 'tmgast/yokai.vim'
 
 " git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'kdheepak/lazygit.nvim'
 
 " magic
