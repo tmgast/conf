@@ -2,13 +2,18 @@
 " ============================
 "
 " Download plug.vim and put it in ~/.vim/autoload
-
+"
+"   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
 " Edit your .vimrc
 "
-" call plug#begin('~/.vim/plugged')
+"   call plug#begin('~/.vim/plugged')
+"
+"   " Make sure you use single quotes
 "
 "   " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
+"   Plug 'junegunn/vim-easy-align'
 "
 "   " Any valid git URL is allowed
 "   Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -17,7 +22,7 @@
 "   Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 "
 "   " On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "   Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 "
 "   " Using a non-default branch
@@ -36,7 +41,7 @@
 "   Plug '~/my-prototype-plugin'
 "
 "   " Initialize plugin system
-" call plug#end()
+"   call plug#end()
 "
 " Then reload .vimrc and :PlugInstall to install plugins.
 "
@@ -237,6 +242,8 @@ function! plug#begin(...)
     let home = s:path(s:plug_fnamemodify(s:plug_expand(a:1), ':p'))
   elseif exists('g:plug_home')
     let home = s:path(g:plug_home)
+  elseif has('nvim')
+    let home = stdpath('data') . '/plugged'
   elseif !empty(&rtp)
     let home = s:path(split(&rtp, ',')[0]) . '/plugged'
   else
@@ -400,7 +407,7 @@ function! plug#end()
 
   for [map, names] in items(lod.map)
     for [mode, map_prefix, key_prefix] in
-          \ [['i', '<C-O>', ''], ['n', '', ''], ['v', '', 'gv'], ['o', '', '']]
+          \ [['i', '<C-\><C-O>', ''], ['n', '', ''], ['v', '', 'gv'], ['o', '', '']]
       execute printf(
       \ '%snoremap <silent> %s %s:<C-U>call <SID>lod_map(%s, %s, %s, "%s")<CR>',
       \ mode, map, map_prefix, string(map), string(names), mode != 'i', key_prefix)

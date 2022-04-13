@@ -97,8 +97,11 @@ require'lspconfig'.eslint.setup{
   capabilities = capabilities,
   on_attach=attach_bindings,
 }
-
 require('lspconfig')['tsserver'].setup {
+  capabilities = capabilities,
+  on_attach=attach_bindings,
+}
+require('lspconfig')['vimls'].setup {
   capabilities = capabilities,
   on_attach=attach_bindings,
 }
