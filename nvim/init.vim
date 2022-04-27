@@ -53,6 +53,7 @@ Plug 'github/copilot.vim'
 
 " Initialize plugin system
 call plug#end()
+let g:loaded_perl_provider = 0
 
 set laststatus=2
 
@@ -68,8 +69,8 @@ if(exists('+termguicolors'))
 endif
 
 " colorscheme tokyonight
-" colorscheme kanagawa
-colorscheme yokai
+" colorscheme yokai
+colorscheme kanagawa
 " hi Normal guibg=NONE ctermbg=NONE
 
 set exrc
@@ -92,7 +93,12 @@ set spell
 
 set wildignore=*/node_modules,coverage,*/dist
 
-let g:python3_host_prog="/bin/python3.10"
+let s:uname = system("uname -s")
+if s:uname == "Darwin\n"
+  let g:python3_host_prog="/usr/bin/python3"
+else
+  let g:python3_host_prog="/bin/python3.10"
+endif
 
 let g:rustfmt_autosave = 1
 

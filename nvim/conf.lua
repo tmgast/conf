@@ -93,7 +93,7 @@ require('lspconfig')['html'].setup {
   capabilities = capabilities,
   on_attach=attach_bindings,
 }
-require'lspconfig'.eslint.setup{
+require('lspconfig')['eslint'].setup{
   capabilities = capabilities,
   on_attach=attach_bindings,
 }
