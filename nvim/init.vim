@@ -144,3 +144,6 @@ imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
 
 " show diagnostics
 nnoremap <S-e> :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+
+map      ; :
+noremap  ;; ;
