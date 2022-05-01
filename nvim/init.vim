@@ -23,6 +23,9 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " nvim language server config
 Plug 'neovim/nvim-lspconfig'
 
+" autoformat
+Plug 'sbdchd/neoformat'
+
 " autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -55,7 +58,7 @@ Plug 'github/copilot.vim'
 call plug#end()
 let g:loaded_perl_provider = 0
 
-set laststatus=2
+set laststatus=3
 
 " use 256 colors in terminal
 if !has("gui_running")
@@ -101,6 +104,7 @@ else
 endif
 
 let g:rustfmt_autosave = 1
+let g:neoformat_try_node_exe = 1
 
 let mapleader = " "
 
@@ -147,9 +151,6 @@ vnoremap jj <ESC>
 " use shift-tab mapping for copilot
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
-
-" show diagnostics
-nnoremap <S-e> :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 map      ; :
 noremap  ;; ;
