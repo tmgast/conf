@@ -26,6 +26,10 @@ Plug 'neovim/nvim-lspconfig'
 " autoformat
 Plug 'sbdchd/neoformat'
 
+" better tree
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 " autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -71,6 +75,7 @@ if(exists('+termguicolors'))
   let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+autocmd BufEnter * syntax sync minlines=4000
 " colorscheme tokyonight
 " colorscheme yokai
 colorscheme kanagawa
