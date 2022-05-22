@@ -153,6 +153,9 @@ nnoremap <leader>k :m .-2<CR>==
 inoremap jj <ESC>
 vnoremap jj <ESC>
 
+" safe close buffer
+nnoremap <leader>q BW :bn\|:bd#<CR>
+
 " use shift-tab mapping for copilot
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")

@@ -4,6 +4,7 @@ configstore
 github-copilot
 lazygit
 go
+stripe
 node_modules
 bcml
 dconf
