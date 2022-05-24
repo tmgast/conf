@@ -156,6 +156,14 @@ vnoremap jj <ESC>
 " safe close buffer
 nnoremap <leader>q BW :bn\|:bd#<CR>
 
+" quick format
+nnoremap <leader>f :Neoformat prettier<CR>
+
+" toggle map
+nnoremap <leader>m :NvimTreeToggle<CR>
+
+" TODO add hotkeys for cnext and cprev and other quickfix list actions
+
 " use shift-tab mapping for copilot
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
