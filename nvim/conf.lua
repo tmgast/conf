@@ -81,7 +81,6 @@ local attach_bindings = function(client)
 end
 
 require'nvim-tree'.setup {
-  open_on_setup = true,
 }
 
 -- Setup lspconfig.

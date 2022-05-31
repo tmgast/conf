@@ -99,6 +99,8 @@ set mouse=a
 set shell=zsh
 set spell
 
+set colorcolumn=80,120
+
 set wildignore=*/node_modules,coverage,*/dist
 
 let s:uname = system("uname -s")
@@ -163,6 +165,8 @@ nnoremap <leader>f :Neoformat prettier<CR>
 nnoremap <leader>m :NvimTreeToggle<CR>
 
 " TODO add hotkeys for cnext and cprev and other quickfix list actions
+nnoremap <leader>. :cnext<CR>
+nnoremap <leader>, :cprevious<CR>
 
 " use shift-tab mapping for copilot
 let g:copilot_no_tab_map = v:true
