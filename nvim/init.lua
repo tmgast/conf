@@ -1,3 +1,132 @@
+vim.cmd([[
+call plug#begin('~/.config/nvim/plugged')
+" Indexing and search
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" Rust Lang
+Plug 'rust-lang/rust.vim'
+
+" colors
+Plug 'cocopon/iceberg.vim'
+Plug 'cocopon/pgmnt.vim'
+Plug 'cocopon/inspecthi.vim'
+Plug 'cocopon/colorswatch.vim'
+
+" color-preview
+Plug 'norcalli/nvim-colorizer.lua'
+
+" Fuzzy Finder
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" nvim language server config
+Plug 'neovim/nvim-lspconfig'
+
+" autoformat
+Plug 'sbdchd/neoformat'
+
+" better tree
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+" autocomplete
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+" Install Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" choice themes
+Plug 'folke/tokyonight.nvim', {'branch': 'main' }
+Plug 'rebelot/kanagawa.nvim'
+Plug 'tmgast/yokai.vim'
+
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'kdheepak/lazygit.nvim'
+
+" magic
+Plug 'github/copilot.vim'
+
+" Initialize plugin system
+call plug#end()
+let g:loaded_perl_provider = 0
+
+set laststatus=3
+
+" use 256 colors in terminal
+if !has("gui_running")
+  set t_Co=256
+  set termguicolors
+endif
+
+if(exists('+termguicolors'))
+  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+autocmd BufEnter * syntax sync minlines=4000
+" colorscheme tokyonight
+" colorscheme yokai
+colorscheme kanagawa
+" hi Normal guibg=NONE ctermbg=NONE
+
+set exrc
+set noerrorbells
+set noswapfile
+set nobackup
+set scrolloff=8
+set hidden
+set tabstop=2 softtabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set shiftround
+set nu
+set nowrap
+set smartcase
+set mouse=a
+set shell=zsh
+set spell
+
+set colorcolumn=80,120
+
+set wildignore=*/node_modules,coverage,*/dist
+
+" use shift-tab mapping for copilot
+let g:copilot_no_tab_map = v:true
+
+let s:uname = system("uname -s")
+if s:uname == "Darwin\n"
+  let g:python3_host_prog="/usr/bin/python3"
+else
+  let g:python3_host_prog="/bin/python3.10"
+endif
+
+let g:rustfmt_autosave = 1
+let g:neoformat_try_node_exe = 1
+
+let mapleader = " "
+
+" show buffer tabs
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" Language Server configs
+set completeopt=menu,menuone,noselect
+]])
+
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 
@@ -80,8 +209,7 @@ local attach_bindings = function(client)
   vim.keymap.set('n', 'E', '<cmd>lua vim.diagnostic.open_float(0, { scope = "buffer", border = "single" })<CR>')
 end
 
-require'nvim-tree'.setup {
-}
+require'nvim-tree'.setup {}
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -121,3 +249,5 @@ require('lspconfig')['rls'].setup {
   capabilities = capabilities,
   on_attach=attach_bindings,
 }
+
+require'keymaps'
