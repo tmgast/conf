@@ -128,55 +128,35 @@ cmp.setup.cmdline(':', {
   })
 })
 
-local attach_bindings = function(client)
-	vim.keymap.set('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-	vim.keymap.set('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
-	vim.keymap.set('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
-	vim.keymap.set('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
-	vim.keymap.set('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-	vim.keymap.set('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
-	vim.keymap.set('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
-	vim.keymap.set('n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-	vim.keymap.set('n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-	vim.keymap.set('n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>')
-	vim.keymap.set('n','<leader>af','<cmd>lua vim.lsp.buf.code_action()<CR>')
-	vim.keymap.set('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
-	vim.keymap.set('n','<leader>ar','<cmd>lua vim.lsp.buf.rename()<CR>')
-	vim.keymap.set('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-	vim.keymap.set('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
-	vim.keymap.set('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
-  vim.keymap.set('n', 'e', '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", border = "single" })<CR>')
-  vim.keymap.set('n', 'E', '<cmd>lua vim.diagnostic.open_float(0, { scope = "buffer", border = "single" })<CR>')
-end
-
 require'nvim-tree'.setup {}
+local Keys = require'keymaps'
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
-  on_attach=attach_bindings,
+  on_attach=Keys.lsp_bindings,
 }
 require('lspconfig')['html'].setup {
   capabilities = capabilities,
-  on_attach=attach_bindings,
+  on_attach=Keys.lsp_bindings,
 }
 require('lspconfig')['eslint'].setup{
   capabilities = capabilities,
-  on_attach=attach_bindings,
+  on_attach=Keys.lsp_bindings,
 }
 require('lspconfig')['tsserver'].setup {
   capabilities = capabilities,
-  on_attach=attach_bindings,
+  on_attach=Keys.lsp_bindings,
 }
 require('lspconfig')['vimls'].setup {
   capabilities = capabilities,
-  on_attach=attach_bindings,
+  on_attach=Keys.lsp_bindings,
 }
 require('lspconfig')['volar'].setup {
   capabilities = capabilities,
-  on_attach=attach_bindings,
+  on_attach=Keys.lsp_bindings,
 }
 require('lspconfig')['rls'].setup {
   settings = {
@@ -187,8 +167,7 @@ require('lspconfig')['rls'].setup {
     },
   },
   capabilities = capabilities,
-  on_attach=attach_bindings,
+  on_attach=Keys.lsp_bindings,
 }
 
 require'tele'
-require'keymaps'
