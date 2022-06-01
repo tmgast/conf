@@ -45,6 +45,7 @@ vim.keymap.set({"n","v","i"}, ';;', ';', { noremap = true })
 -- Find files using Telescope command-line sugar.
 vim.keymap.set('n', 'ff', '<cmd>Telescope find_files<CR>', { noremap = true })
 vim.keymap.set('n', 'fg', '<cmd>Telescope live_grep<CR>', { noremap = true })
+vim.keymap.set('n', 'fd', '<cmd>Telescope lsp_document_symbols<CR>', { noremap = true })
 vim.keymap.set('n', 'fb', '<cmd>Telescope buffers<CR>', { noremap = true })
 vim.keymap.set('n', 'fh', '<cmd>Telescope help_tags<CR>', { noremap = true })
 vim.keymap.set('n', 'E', '<cmd>Telescope diagnostics theme=ivy<CR>', { noremap = true })

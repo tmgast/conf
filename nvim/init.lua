@@ -1,10 +1,9 @@
 require'plug'
 
+vim.opt.laststatus = 3
+vim.g.loaded_perl_provider = 0
+
 vim.cmd([[
-let g:loaded_perl_provider = 0
-
-set laststatus=3
-
 " use 256 colors in terminal
 if !has("gui_running")
   set t_Co=256
@@ -110,21 +109,6 @@ cmp.setup({
     { name = 'luasnip' }, -- For luasnip users.
   }, {
     { name = 'buffer' },
-  })
-})
-
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' },
-    { name = 'cmdline', keyword_pattern=[=[[^[:blank:]\!]*]=] }
   })
 })
 
