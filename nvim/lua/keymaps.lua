@@ -20,6 +20,10 @@ vim.keymap.set('i', '<C-k>', '<esc>:m .-2<CR>==i', { noremap = true })
 vim.keymap.set('n', '<leader>j', ':m .+1<CR>==', { noremap = true })
 vim.keymap.set('n', '<leader>k', ':m .-2<CR>==', { noremap = true })
 
+-- quick delete inside
+vim.keymap.set('n', '<leader>d', 'di(', { noremap = true })
+vim.keymap.set('n', '<leader>D', 'di{', { noremap = true })
+
 -- better i-mode escape
 vim.keymap.set('i', 'jj', '<ESC>', { noremap = true })
 vim.keymap.set('v', 'jj', '<ESC>', { noremap = true })

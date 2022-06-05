@@ -1,4 +1,5 @@
 require'plug'
+require'lline'
 
 vim.opt.laststatus = 3
 vim.g.loaded_perl_provider = 0
@@ -39,6 +40,7 @@ set mouse=a
 set shell=zsh
 set spell
 
+set cursorline
 set colorcolumn=80,120
 
 set wildignore=*/node_modules,coverage,*/dist

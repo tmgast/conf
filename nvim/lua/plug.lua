@@ -12,6 +12,7 @@ Plug 'cocopon/iceberg.vim'
 Plug 'cocopon/pgmnt.vim'
 Plug 'cocopon/inspecthi.vim'
 Plug 'cocopon/colorswatch.vim'
+Plug 'rktjmp/lush.nvim'
 
 -- color-preview
 Plug 'norcalli/nvim-colorizer.lua'
@@ -42,9 +43,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
--- Install Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+-- Install Lualine
+Plug 'nvim-lualine/lualine.nvim'
 
 -- choice themes
 Plug('folke/tokyonight.nvim', { branch = 'main' })
