@@ -73,8 +73,9 @@ function M.lsp_bindings(client)
 	vim.keymap.set('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 	vim.keymap.set('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
 	vim.keymap.set('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
-  vim.keymap.set('n', 'e.', vim.diagnostic.goto_next, { buffer = 0 })
-  vim.keymap.set('n', 'e,', vim.diagnostic.goto_prev, { buffer = 0 })
+  vim.keymap.set('n', 'e', vim.lsp.diagnostic.show_line_diagnostics, { buffer = 0 })
+  vim.keymap.set('n', 'e.', vim.lsp.diagnostic.goto_next, { buffer = 0 })
+  vim.keymap.set('n', 'e,', vim.lsp.diagnostic.goto_prev, { buffer = 0 })
   vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { buffer = 0 })
 end
 

@@ -45,6 +45,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 -- Install Lualine
 Plug 'nvim-lualine/lualine.nvim'
+Plug ('akinsho/bufferline.nvim', { tag = 'v2.*' })
 
 -- choice themes
 Plug('folke/tokyonight.nvim', { branch = 'main' })

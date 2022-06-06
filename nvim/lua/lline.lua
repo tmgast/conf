@@ -1,3 +1,6 @@
+vim.opt.termguicolors = true
+require("bufferline").setup{}
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -10,8 +13,28 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_b = {
+      'branch',
+      {
+        'diff',
+        symbols = {added = ' ', modified = ' ', removed = ' '},
+      },
+      {
+        'diagnostics',
+        symbols = {error = ' ', warn = ' ', info = ' ', hint = '﨧'},
+      }
+    },
+    lualine_c = {
+      {
+        'filetype',
+        icon_only = true,
+      },
+      {
+        'filename',
+        file_status = true,
+        path = 1
+      }
+    },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
