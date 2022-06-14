@@ -1,5 +1,7 @@
 require'plug'
 require'lline'
+require'ndap'
+require'format'
 
 vim.opt.laststatus = 3
 vim.g.loaded_perl_provider = 0
@@ -18,8 +20,8 @@ endif
 
 autocmd BufEnter * syntax sync minlines=4000
 " colorscheme tokyonight
-" colorscheme yokai
-colorscheme kanagawa
+colorscheme yokai
+" colorscheme kanagawa
 " hi Normal guibg=NONE ctermbg=NONE
 
 set exrc
@@ -73,6 +75,12 @@ local cmp = require'cmp'
 
 require('colorizer').setup()
 require('gitsigns').setup()
+
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+    enable = true,
+  },
+}
 
 cmp.setup({
   snippet = {

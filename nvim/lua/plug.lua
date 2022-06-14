@@ -26,8 +26,11 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 -- nvim language server config
 Plug 'neovim/nvim-lspconfig'
 
+-- debugging
+Plug 'mfussenegger/nvim-dap'
+
 -- autoformat
-Plug 'sbdchd/neoformat'
+Plug 'mhartington/formatter.nvim'
 
 -- better tree
 Plug 'kyazdani42/nvim-web-devicons'
