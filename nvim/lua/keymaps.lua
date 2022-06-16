@@ -31,9 +31,6 @@ vim.keymap.set('v', 'jj', '<ESC>', { noremap = true })
 -- safe close buffer
 vim.keymap.set('n', '<leader>q', '<cmd>BW :bn|:bd#<CR>', { noremap = true, silent = true })
 
--- quick format
-vim.keymap.set('n', '<leader>f', '<cmd>Format<CR>', { noremap = true })
-
 -- Git
 vim.keymap.set('n', '<leader>ga', '<cmd>Git add -A<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>gc', '<cmd>Git commit<CR>', { noremap = true })
@@ -43,6 +40,9 @@ vim.keymap.set('n', '<leader>gs', '<cmd>Git status<CR>', { noremap = true })
 
 -- toggle map
 vim.keymap.set('n', '<leader>m', '<cmd>NvimTreeToggle<CR>', { noremap = true })
+
+-- formatter
+vim.keymap.set('n', '<leader>f', '<cmd>Prettier<CR>', { noremap = true })
 
 -- jump through quickfix list
 vim.keymap.set('n', '<leader>.', '<cmd>cnext<CR>', { noremap = true })

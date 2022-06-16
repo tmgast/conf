@@ -4,6 +4,9 @@ vim.call('plug#begin','~/.config/nvim/plugged')
 -- Indexing and search
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
+-- lsp utility runner
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
 -- Rust Lang
 Plug 'rust-lang/rust.vim'
 
@@ -30,8 +33,9 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'mfussenegger/nvim-dap'
 
 -- autoformat
-Plug 'mhartington/formatter.nvim'
-
+Plug 'lukas-reineke/lsp-format.nvim'
+Plug 'MunifTanjim/prettier.nvim'
+--
 -- better tree
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'

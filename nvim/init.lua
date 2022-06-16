@@ -1,7 +1,7 @@
 require'plug'
 require'lline'
 require'ndap'
-require'format'
+require'lsp'
 
 vim.opt.laststatus = 3
 vim.g.loaded_perl_provider = 0
@@ -116,7 +116,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
+    { name = 'luasnip' },
   }, {
     { name = 'buffer' },
   })
@@ -125,32 +125,63 @@ cmp.setup({
 require'nvim-tree'.setup {}
 local Keys = require'keymaps'
 
+prettier = require'prettier'
+prettier.setup({
+  ["null-ls"] = {
+    runtime_condition = function(params)
+      -- return false to skip running prettier
+      return true
+    end,
+    timeout = 5000,
+  }
+})
+
+prettier.setup({
+  bin = 'prettier', -- or `prettierd`
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "yaml",
+  },
+})
+
 -- Setup lspconfig.
+require("lsp-format").setup({})
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
-  on_attach=Keys.lsp_bindings,
+  on_attach = Keys.lsp_bindings,
 }
 require('lspconfig')['html'].setup {
   capabilities = capabilities,
-  on_attach=Keys.lsp_bindings,
+  on_attach = Keys.lsp_bindings,
 }
 require('lspconfig')['eslint'].setup{
   capabilities = capabilities,
-  on_attach=Keys.lsp_bindings,
-}
-require('lspconfig')['tsserver'].setup {
-  capabilities = capabilities,
-  on_attach=Keys.lsp_bindings,
-}
-require('lspconfig')['vimls'].setup {
-  capabilities = capabilities,
-  on_attach=Keys.lsp_bindings,
+  on_attach = Keys.lsp_bindings,
+  filetypes = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
 }
 require('lspconfig')['volar'].setup {
   capabilities = capabilities,
-  on_attach=Keys.lsp_bindings,
+  on_attach = Keys.lsp_bindings,
+}
+require('lspconfig')['tsserver'].setup {
+  capabilities = capabilities,
+  on_attach = Keys.lsp_bindings,
+}
+require('lspconfig')['vimls'].setup {
+  capabilities = capabilities,
+  on_attach = Keys.lsp_bindings,
 }
 require('lspconfig')['rls'].setup {
   settings = {
@@ -161,7 +192,8 @@ require('lspconfig')['rls'].setup {
     },
   },
   capabilities = capabilities,
-  on_attach=Keys.lsp_bindings,
+  on_attach = Keys.lsp_bindings,
 }
+
 
 require'tele'
