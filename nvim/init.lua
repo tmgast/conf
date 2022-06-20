@@ -6,6 +6,7 @@ require'refactor'
 require'signs'
 require'lline'
 require'opts'
+require'completion'
 
 require('colorizer').setup()
 
@@ -14,49 +15,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
-
--- Setup nvim-cmp.
-local cmp = require'cmp'
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif require('luasnip').expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      elseif vim.b._copilot_suggestion ~= nil then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(vim.fn['copilot#Accept'](), true, true, true), '')
-      else
-        fallback()
-      end
-    end, {
-      'i',
-      's',
-    }),
-  },
-  completion = {
-     completeopt = 'menu,menuone,noinsert'
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, {
-    { name = 'buffer' },
-  })
-})
 
 require'nvim-tree'.setup {}
 local Keys = require'keymaps'
@@ -88,6 +46,7 @@ prettier.setup({
     "typescriptreact",
     "vue",
     "yaml",
+    "py",
   },
 })
 
