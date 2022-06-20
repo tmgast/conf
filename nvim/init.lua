@@ -4,8 +4,8 @@ require'lline'
 require'ndap'
 require'tele'
 require'lsp'
-require'refactor'
 require'signs'
+require'refactor'
 
 require('colorizer').setup()
 
