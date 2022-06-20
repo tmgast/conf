@@ -1,11 +1,11 @@
 require'plug'
-require'opts'
-require'lline'
-require'ndap'
 require'tele'
 require'lsp'
-require'signs'
+require'ndap'
 require'refactor'
+require'signs'
+require'lline'
+require'opts'
 
 require('colorizer').setup()
 
