@@ -37,6 +37,7 @@ vim.keymap.set('n', '<leader>gc', '<cmd>Git commit<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>gp', '<cmd>Git push<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>gu', '<cmd>Git pull<CR>', { noremap = true })
 vim.keymap.set('n', '<leader>gs', '<cmd>Git status<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>', { noremap = true })
 
 -- toggle map
 vim.keymap.set('n', '<leader>m', '<cmd>NvimTreeToggle<CR>', { noremap = true })

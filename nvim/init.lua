@@ -1,76 +1,13 @@
 require'plug'
+require'opts'
 require'lline'
 require'ndap'
 require'tele'
 require'lsp'
 require'refactor'
-
-vim.opt.laststatus = 3
-vim.g.loaded_perl_provider = 0
-vim.opt.exrc = true
-vim.opt.errorbells = false
-vim.opt.visualbell = false
-
-vim.cmd([[
-" use 256 colors in terminal
-if !has("gui_running")
-  set t_Co=256
-  set termguicolors
-endif
-
-if(exists('+termguicolors'))
-  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-endif
-
-autocmd BufEnter * syntax sync minlines=4000
-" colorscheme tokyonight
-colorscheme yokai
-" colorscheme kanagawa
-" hi Normal guibg=NONE ctermbg=NONE
-
-set noswapfile
-set nobackup
-set scrolloff=8
-set hidden
-set tabstop=2 softtabstop=2
-set shiftwidth=2
-set expandtab
-set smartindent
-set shiftround
-set nu
-set nowrap
-set smartcase
-set mouse=a
-set shell=zsh
-set spell
-
-set cursorline
-set colorcolumn=80,120
-
-set wildignore=*/node_modules,coverage,*/dist
-
-" use shift-tab mapping for copilot
-let g:copilot_no_tab_map = v:true
-
-let s:uname = system("uname -s")
-if s:uname == "Darwin\n"
-  let g:python3_host_prog="/usr/bin/python3"
-else
-  let g:python3_host_prog="/bin/python3.10"
-endif
-
-let g:rustfmt_autosave = 1
-let g:neoformat_try_node_exe = 1
-
-let mapleader = " "
-
-" Language Server configs
-set completeopt=menu,menuone,noselect
-]])
+require'signs'
 
 require('colorizer').setup()
-require('gitsigns').setup()
 
 require'nvim-treesitter.configs'.setup {
     highlight = {
@@ -109,7 +46,9 @@ cmp.setup({
       'i',
       's',
     }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  },
+  completion = {
+     completeopt = 'menu,menuone,noinsert'
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
