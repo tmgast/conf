@@ -83,7 +83,9 @@ function M.lsp_bindings(client)
   vim.keymap.set('n', 'e', vim.lsp.diagnostic.show_line_diagnostics, { buffer = 0 })
   vim.keymap.set('n', 'e.', vim.lsp.diagnostic.goto_next, { buffer = 0 })
   vim.keymap.set('n', 'e,', vim.lsp.diagnostic.goto_prev, { buffer = 0 })
-  vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { buffer = 0 })
+
+  -- remap to open the Telescope refactoring menu in visual mode
+  vim.keymap.set('v', '<leader>r', require('telescope').extensions.refactoring.refactors)
 end
 
 return M

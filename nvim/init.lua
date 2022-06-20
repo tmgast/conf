@@ -1,10 +1,15 @@
 require'plug'
 require'lline'
 require'ndap'
+require'tele'
 require'lsp'
+require'refactor'
 
 vim.opt.laststatus = 3
 vim.g.loaded_perl_provider = 0
+vim.opt.exrc = true
+vim.opt.errorbells = false
+vim.opt.visualbell = false
 
 vim.cmd([[
 " use 256 colors in terminal
@@ -24,8 +29,6 @@ colorscheme yokai
 " colorscheme kanagawa
 " hi Normal guibg=NONE ctermbg=NONE
 
-set exrc
-set noerrorbells
 set noswapfile
 set nobackup
 set scrolloff=8
@@ -62,16 +65,9 @@ let g:neoformat_try_node_exe = 1
 
 let mapleader = " "
 
-" show buffer tabs
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
 " Language Server configs
 set completeopt=menu,menuone,noselect
 ]])
-
--- Setup nvim-cmp.
-local cmp = require'cmp'
 
 require('colorizer').setup()
 require('gitsigns').setup()
@@ -82,11 +78,12 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+-- Setup nvim-cmp.
+local cmp = require'cmp'
 cmp.setup({
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -194,6 +191,3 @@ require('lspconfig')['rls'].setup {
   capabilities = capabilities,
   on_attach = Keys.lsp_bindings,
 }
-
-
-require'tele'

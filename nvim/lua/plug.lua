@@ -35,7 +35,7 @@ Plug 'mfussenegger/nvim-dap'
 -- autoformat
 Plug 'lukas-reineke/lsp-format.nvim'
 Plug 'MunifTanjim/prettier.nvim'
---
+
 -- better tree
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -49,6 +49,9 @@ Plug 'hrsh7th/nvim-cmp'
 
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+
+-- refactoring
+Plug "ThePrimeagen/refactoring.nvim"
 
 -- Install Lualine
 Plug 'nvim-lualine/lualine.nvim'
