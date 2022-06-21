@@ -1,66 +1,66 @@
 -- Ctrl jump between buffers
-vim.keymap.set('n', '<C-j>', '<cmd>bnext<CR>', { noremap = true })
-vim.keymap.set('n', '<C-k>', '<cmd>bprevious<CR>', { noremap = true })
+vim.keymap.set('n', '<C-j>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<C-k>', '<cmd>bprevious<CR>')
 
-vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { noremap = true })
-vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>', { noremap = true })
+vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>')
 
-vim.keymap.set('n', 'Y', 'yg$', { noremap = true })
+vim.keymap.set('n', 'Y', 'yg$')
 
 -- keep cursor in place when searching and line concat actions
-vim.keymap.set('n', 'z', 'nzzzv', { noremap = true })
-vim.keymap.set('n', 'Z', 'Nzzzv', { noremap = true })
-vim.keymap.set('n', 'J', 'mzJ`z', { noremap = true })
+vim.keymap.set('n', 'z', 'nzzzv')
+vim.keymap.set('n', 'Z', 'Nzzzv')
+vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- shifting lines
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true })
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true })
-vim.keymap.set('i', '<C-j>', '<esc>:m .+1<CR>==i', { noremap = true })
-vim.keymap.set('i', '<C-k>', '<esc>:m .-2<CR>==i', { noremap = true })
-vim.keymap.set('n', '<leader>j', ':m .+1<CR>==', { noremap = true })
-vim.keymap.set('n', '<leader>k', ':m .-2<CR>==', { noremap = true })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('i', '<C-j>', '<esc>:m .+1<CR>==i')
+vim.keymap.set('i', '<C-k>', '<esc>:m .-2<CR>==i')
+vim.keymap.set('n', '<leader>j', ':m .+1<CR>==')
+vim.keymap.set('n', '<leader>k', ':m .-2<CR>==')
 
 -- quick delete inside
-vim.keymap.set('n', '<leader>d', 'di(', { noremap = true })
-vim.keymap.set('n', '<leader>D', 'di{', { noremap = true })
+vim.keymap.set('n', '<leader>d', 'di(')
+vim.keymap.set('n', '<leader>D', 'di{')
 
 -- better i-mode escape
-vim.keymap.set('i', 'jj', '<ESC>', { noremap = true })
-vim.keymap.set('v', 'jj', '<ESC>', { noremap = true })
+vim.keymap.set('i', 'jj', '<ESC>')
+vim.keymap.set('v', 'jj', '<ESC>')
 
 -- safe close buffer
-vim.keymap.set('n', '<leader>q', '<cmd>BW :bn|:bd#<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>q', '<cmd>BW :bn|:bd#<CR>', { silent = true })
 
 -- Git
-vim.keymap.set('n', '<leader>ga', '<cmd>Git add -A<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gc', '<cmd>Git commit<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gp', '<cmd>Git push<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gu', '<cmd>Git pull<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gs', '<cmd>Git status<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>ga', '<cmd>Git add -A<CR>')
+vim.keymap.set('n', '<leader>gc', '<cmd>Git commit<CR>')
+vim.keymap.set('n', '<leader>gp', '<cmd>Git push<CR>')
+vim.keymap.set('n', '<leader>gu', '<cmd>Git pull<CR>')
+vim.keymap.set('n', '<leader>gs', '<cmd>Git status<CR>')
+vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
 
 -- toggle map
-vim.keymap.set('n', '<leader>m', '<cmd>NvimTreeToggle<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>m', '<cmd>NvimTreeToggle<CR>')
 
 -- formatter
-vim.keymap.set('n', '<leader>f', '<cmd>Prettier<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>f', '<cmd>Prettier<CR>')
 
 -- jump through quickfix list
-vim.keymap.set('n', '<leader>.', '<cmd>cnext<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>,', '<cmd>cprevious<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>.', '<cmd>cnext<CR>')
+vim.keymap.set('n', '<leader>,', '<cmd>cprevious<CR>')
 
-vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("<CR>")', { noremap = true, silent = true, expr = true, script = true })
+vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
 
-vim.keymap.set({"n","v","i"}, ';', ':', { noremap = true })
-vim.keymap.set({"n","v","i"}, ';;', ';', { noremap = true })
+vim.keymap.set({"n","v","i"}, ';', ':')
+vim.keymap.set({"n","v","i"}, ';;', ';')
 
 -- Find files using Telescope command-line sugar.
-vim.keymap.set('n', 'ff', '<cmd>Telescope find_files<CR>', { noremap = true })
-vim.keymap.set('n', 'fg', '<cmd>Telescope live_grep<CR>', { noremap = true })
-vim.keymap.set('n', 'fd', '<cmd>Telescope lsp_document_symbols<CR>', { noremap = true })
-vim.keymap.set('n', 'fb', '<cmd>Telescope buffers<CR>', { noremap = true })
-vim.keymap.set('n', 'fh', '<cmd>Telescope help_tags<CR>', { noremap = true })
-vim.keymap.set('n', 'E', '<cmd>Telescope diagnostics theme=ivy<CR>', { noremap = true })
+vim.keymap.set('n', 'ff', '<cmd>Telescope find_files<CR>')
+vim.keymap.set('n', 'fg', '<cmd>Telescope live_grep<CR>')
+vim.keymap.set('n', 'fd', '<cmd>Telescope lsp_document_symbols<CR>')
+vim.keymap.set('n', 'fb', '<cmd>Telescope buffers<CR>')
+vim.keymap.set('n', 'fh', '<cmd>Telescope help_tags<CR>')
+vim.keymap.set('n', 'E', '<cmd>Telescope diagnostics theme=ivy<CR>')
 
 local M = {}
 
@@ -88,5 +88,26 @@ function M.lsp_bindings(client)
   -- remap to open the Telescope refactoring menu in visual mode
   vim.keymap.set('v', '<leader>r', require('telescope').extensions.refactoring.refactors)
 end
+
+function M.debug_bindings(client)
+end
+
+vim.keymap.set('n', '<leader>dc', require'dap'.continue, { silent = true })
+vim.keymap.set('n', '<leader>ds', require'dap'.step_over, { silent = true })
+vim.keymap.set('n', '<leader>de', require'dap'.step_into, { silent = true })
+vim.keymap.set('n', '<leader>dd', require'dap'.step_out, { silent = true })
+vim.keymap.set('n', '<Leader>b', require'dap'.toggle_breakpoint, { silent = true })
+vim.keymap.set('n', '<Leader>B', "<Cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>lp', "<Cmd> lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", { silent = true })
+vim.keymap.set('n', '<Leader>dr', require'dap'.repl.open, { silent = true })
+vim.keymap.set('n', '<Leader>dl', require'dap'.run_last, { silent = true })
+vim.keymap.set('n', '<Leader>du', require'dapui'.toggle, { silent = true })
+
+vim.keymap.set('n', '<Leader>tr', '<cmd>lua require"jester".run({dap = {console = ""}})<CR>', { silent = true })
+vim.keymap.set('n', '<Leader>td', require'jester'.debug, { silent = true })
+vim.keymap.set('n', '<Leader>tl', require'jester'.debug_last, { silent = true })
+vim.keymap.set('n', '<Leader>tf', require'jester'.debug_file, { silent = true })
+
+
 
 return M

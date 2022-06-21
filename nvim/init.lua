@@ -1,19 +1,32 @@
 require'plug'
 require'tele'
 require'lsp'
-require'ndap'
 require'refactor'
 require'signs'
 require'lline'
 require'opts'
 require'completion'
 
+require('fidget').setup({
+  window = {
+    blend = 30,
+  },
+  text = {
+    spinner = "dots_pulse",
+  },
+  fmt = {
+    stack_upwards = false,
+    max_width = 80,
+  },
+})
+
 require('colorizer').setup()
 
 require'nvim-treesitter.configs'.setup {
-    highlight = {
-    enable = true,
-  },
+  ensure_installed = { "javascript", "typescript" },
+  highlight = {
+    enable = true
+  }
 }
 
 require'nvim-tree'.setup {}
@@ -53,6 +66,9 @@ prettier.setup({
 -- Setup lspconfig.
 require("lsp-format").setup({})
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+require'ndap'
+
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
   on_attach = Keys.lsp_bindings,

@@ -7,6 +7,9 @@ Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 -- lsp utility runner
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
+-- lsp status pane
+Plug 'j-hui/fidget.nvim'
+
 -- Rust Lang
 Plug 'rust-lang/rust.vim'
 
@@ -31,6 +34,10 @@ Plug 'neovim/nvim-lspconfig'
 
 -- debugging
 Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'David-Kunz/jester'
 
 -- autoformat
 Plug 'lukas-reineke/lsp-format.nvim'
