@@ -10,45 +10,13 @@ vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DapBreakpoint'
 vim.fn.sign_define('DapLogPoint', { text='', texthl='DapLogPoint', linehl='DapLogPoint', numhl= 'DapLogPoint' })
 vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
 
+dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
+
 -- Adapter configs
 dap.adapters.node2 = {
   type = 'executable',
   command = 'node',
   args = {os.getenv('HOME') .. '/utils/vscode-node-debug2/out/src/nodeDebug.js'},
-}
-
-require("jester").setup({
-  path_to_jest_run = './node_modules/.bin/jest',
-  command = 'yarn',
-  dap = {
-    args = {'node', os.getenv('HOME') .. '/utils/vscode-node-debug2/out/src/nodeDebug.js'},
-    console = '',
-    outDir = "${workspaceFolder}/dist",
-  }
-})
-
--- Language configs
-dap.configurations.typescript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${workspaceFolder}/src/index.ts',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    outDir = "${workspaceFolder}/dist",
-    runtimeArgs = {'--inspect-brk', './node_modules/.bin/jest', '--no-coverage', '-t', '${result}', '--', '${file}'},
-    protocol = 'inspector',
-    console = '',
-  },
-  
-  {
-    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require'dap.utils'.pick_process,
-  },
 }
 
 require("dapui").setup({
@@ -77,6 +45,8 @@ require("dapui").setup({
         "breakpoints",
         { id = "stacks", size = 0.6 },
         { id = "watches", size = 0.1 },
+        { id = "variables", size = 0.1 },
+        { id = "console", size = 0.1 },
       },
       size = 45,
       position = "left",
@@ -101,5 +71,40 @@ require("dapui").setup({
   windows = { indent = 1 },
   render = {
     max_type_length = nil, -- Can be integer or nil.
+  }
+})
+
+-- Language configs
+dap.configurations.typescript = {
+  {
+    name = 'Launch',
+    type = 'node2',
+    request = 'launch',
+    program = '${workspaceFolder}/src/index.ts',
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    outDir = "${workspaceFolder}/dist",
+    runtimeArgs = {'--inspect-brk', './node_modules/.bin/jest', '--no-coverage', '-t', '${result}', '--', '${file}'},
+    protocol = 'inspector',
+    console = '',
+  },
+  
+  {
+    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+    name = 'Attach to process',
+    type = 'node2',
+    request = 'attach',
+    processId = require'dap.utils'.pick_process,
+  },
+}
+
+require("jester").setup({
+  path_to_jest_run = './node_modules/.bin/jest',
+  command = 'yarn',
+  terminal_cmd = 'bo vnew | term',
+  dap = {
+    args = {'node', os.getenv('HOME') .. '/utils/vscode-node-debug2/out/src/nodeDebug.js'},
+    console = '',
+    outDir = "${workspaceFolder}/dist",
   }
 })
