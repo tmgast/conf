@@ -1,11 +1,14 @@
 require'plug'
 require'tele'
 require'lsp'
-require'refactor'
 require'signs'
 require'lline'
 require'opts'
 require'completion'
+require'refactor'
+
+require('dressing').setup({})
+require("icon-picker")
 
 require('fidget').setup({
   window = {
@@ -87,8 +90,10 @@ require('lspconfig')['volar'].setup {
   on_attach = Keys.lsp_bindings,
 }
 require('lspconfig')['tsserver'].setup {
+  root_dir = require('lspconfig').util.root_pattern("yarn.lock", "tsconfig.json", ".git"),
   capabilities = capabilities,
   on_attach = Keys.lsp_bindings,
+  settings = {documentFormatting = true},
 }
 require('lspconfig')['vimls'].setup {
   capabilities = capabilities,

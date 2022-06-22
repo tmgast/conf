@@ -47,6 +47,10 @@ Plug 'MunifTanjim/prettier.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
+-- icon picker
+Plug 'stevearc/dressing.nvim'
+Plug 'ziontee113/icon-picker.nvim'
+
 -- autocomplete
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'

@@ -21,7 +21,6 @@ vim.o.smartcase = true
 vim.cmd 'set mouse=a'
 vim.o.shell = '/bin/zsh'
 vim.o.spell = true
-vim.cmd 'colorscheme yokai'
 vim.o.cursorline = true
 vim.o.colorcolumn = "80,120"
 vim.o.wildignore = "*/node_modules,coverage,*/dist"
@@ -48,3 +47,4 @@ else
 endif
 ]])
 
+vim.cmd([[colorscheme yokai]])

@@ -1,3 +1,5 @@
+local silent = { silent = true }
+
 -- Ctrl jump between buffers
 vim.keymap.set('n', '<C-j>', '<cmd>bnext<CR>')
 vim.keymap.set('n', '<C-k>', '<cmd>bprevious<CR>')
@@ -29,7 +31,7 @@ vim.keymap.set('i', 'jj', '<ESC>')
 vim.keymap.set('v', 'jj', '<ESC>')
 
 -- safe close buffer
-vim.keymap.set('n', '<leader>q', '<cmd>BW :bn|:bd#<CR>', { silent = true })
+vim.keymap.set('n', '<leader>q', '<cmd>BW :bn|:bd#<CR>', silent )
 
 -- Git
 vim.keymap.set('n', '<leader>ga', '<cmd>Git add -A<CR>')
@@ -92,22 +94,25 @@ end
 function M.debug_bindings(client)
 end
 
-vim.keymap.set('n', '<leader>dc', require'dap'.continue, { silent = true })
-vim.keymap.set('n', '<leader>ds', require'dap'.step_over, { silent = true })
-vim.keymap.set('n', '<leader>de', require'dap'.step_into, { silent = true })
-vim.keymap.set('n', '<leader>dd', require'dap'.step_out, { silent = true })
-vim.keymap.set('n', '<Leader>b', require'dap'.toggle_breakpoint, { silent = true })
-vim.keymap.set('n', '<Leader>B', "<Cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", { silent = true })
-vim.keymap.set('n', '<Leader>lp', "<Cmd> lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", { silent = true })
-vim.keymap.set('n', '<Leader>dr', require'dap'.repl.open, { silent = true })
-vim.keymap.set('n', '<Leader>dl', require'dap'.run_last, { silent = true })
-vim.keymap.set('n', '<Leader>du', require'dapui'.toggle, { silent = true })
+vim.keymap.set('n', '<leader>dc', require'dap'.continue, silent )
+vim.keymap.set('n', '<leader>ds', require'dap'.step_over, silent )
+vim.keymap.set('n', '<leader>de', require'dap'.step_into, silent )
+vim.keymap.set('n', '<leader>dd', require'dap'.step_out, silent )
+vim.keymap.set('n', '<Leader>b', require'dap'.toggle_breakpoint, silent )
+vim.keymap.set('n', '<Leader>B', "<Cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", silent )
+vim.keymap.set('n', '<Leader>lp', "<Cmd> lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", silent )
+vim.keymap.set('n', '<Leader>dr', require'dap'.repl.open, silent )
+vim.keymap.set('n', '<Leader>dl', require'dap'.run_last, silent )
+vim.keymap.set('n', '<Leader>du', require'dapui'.toggle, silent )
 
-vim.keymap.set('n', '<Leader>tr', '<cmd>lua require"jester".run({dap = {console = ""}})<CR>', { silent = true })
-vim.keymap.set('n', '<Leader>td', require'jester'.debug, { silent = true })
-vim.keymap.set('n', '<Leader>tl', require'jester'.debug_last, { silent = true })
-vim.keymap.set('n', '<Leader>tf', require'jester'.debug_file, { silent = true })
+vim.keymap.set('n', '<Leader>tr', '<cmd>lua require"jester".run({dap = {console = ""}})<CR>', silent )
+vim.keymap.set('n', '<Leader>td', require'jester'.debug, silent )
+vim.keymap.set('n', '<Leader>tl', require'jester'.debug_last, silent )
+vim.keymap.set('n', '<Leader>tf', require'jester'.debug_file, silent )
+vim.keymap.set('n', '<Leader>i', require("dapui").eval, silent )
 
-
+vim.keymap.set("n", "<Leader>pi", "<cmd>PickIcons<cr>", silent )
+vim.keymap.set("i", "<C-i>", "<cmd>PickIconsInsert<cr>", silent )
+vim.keymap.set("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", silent )
 
 return M

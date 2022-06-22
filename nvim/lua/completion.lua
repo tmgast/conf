@@ -31,7 +31,6 @@ cmp.setup({
     }),
   },
   completion = {
-     completeopt = 'menu,menuone,noinsert'
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
