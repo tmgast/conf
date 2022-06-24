@@ -83,7 +83,7 @@ require('lspconfig')['html'].setup {
 require('lspconfig')['eslint'].setup{
   capabilities = capabilities,
   on_attach = Keys.lsp_bindings,
-  filetypes = {'javascript', 'javascriptreact', 'typescript', 'typescriptreact'},
+  filetypes = {'javascript', 'javascriptreact'},
 }
 require('lspconfig')['volar'].setup {
   capabilities = capabilities,

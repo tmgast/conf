@@ -86,6 +86,7 @@ function M.lsp_bindings(client)
   vim.keymap.set('n', 'e', vim.lsp.diagnostic.show_line_diagnostics, { buffer = 0 })
   vim.keymap.set('n', 'e.', vim.lsp.diagnostic.goto_next, { buffer = 0 })
   vim.keymap.set('n', 'e,', vim.lsp.diagnostic.goto_prev, { buffer = 0 })
+  vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { buffer = 0 })
 
   -- remap to open the Telescope refactoring menu in visual mode
   vim.keymap.set('v', '<leader>r', require('telescope').extensions.refactoring.refactors)
@@ -94,10 +95,13 @@ end
 function M.debug_bindings(client)
 end
 
+vim.keymap.set('i', '~', '<Cmd>call copilot#Next()<CR>', silent)
+
 vim.keymap.set('n', '<leader>dc', require'dap'.continue, silent )
-vim.keymap.set('n', '<leader>ds', require'dap'.step_over, silent )
-vim.keymap.set('n', '<leader>de', require'dap'.step_into, silent )
-vim.keymap.set('n', '<leader>dd', require'dap'.step_out, silent )
+vim.keymap.set('n', '<C-/>', require'dap'.step_over, silent )
+vim.keymap.set('n', '<C-.>', require'dap'.step_into, silent )
+vim.keymap.set('n', '<C-.>', require'dap'.step_back, silent )
+vim.keymap.set('n', '<C-,>', require'dap'.step_out, silent )
 vim.keymap.set('n', '<Leader>b', require'dap'.toggle_breakpoint, silent )
 vim.keymap.set('n', '<Leader>B', "<Cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", silent )
 vim.keymap.set('n', '<Leader>lp', "<Cmd> lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", silent )
@@ -114,5 +118,30 @@ vim.keymap.set('n', '<Leader>i', require("dapui").eval, silent )
 vim.keymap.set("n", "<Leader>pi", "<cmd>PickIcons<cr>", silent )
 vim.keymap.set("i", "<C-i>", "<cmd>PickIconsInsert<cr>", silent )
 vim.keymap.set("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", silent )
+
+local Hydra = require('hydra')
+Hydra({
+    name = "Debugger",
+    config = {
+      color = 'amaranth',
+      invoke_on_body = true
+    },
+    mode = 'n',
+    body = '<leader>d',
+    heads = {
+      -- Debugger movement
+      {'L', '<C-.>'},
+      {'J', '<C-/>'},
+      {'H', '<C-,>'},
+
+      -- Breakpoints
+      {'b','<leaderb>'},
+      {'B','<leader>B'},
+      {'m','<leader>lp'},
+
+      { '<Esc>', nil, { exit = true, nowait = true }},
+      { 'q',     nil , { exit = true, nowait = true }},
+    },
+})
 
 return M

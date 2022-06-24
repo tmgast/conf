@@ -49,6 +49,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 -- icon picker
 Plug 'stevearc/dressing.nvim'
+Plug 'rcarriga/nvim-notify'
 Plug 'ziontee113/icon-picker.nvim'
 
 -- autocomplete
@@ -81,6 +82,8 @@ Plug 'kdheepak/lazygit.nvim'
 
 -- magic
 Plug 'github/copilot.vim'
+Plug 'anuvyklack/hydra.nvim'
+Plug 'anuvyklack/keymap-layer.nvim'
 
 -- Initialize plugin system
 vim.call('plug#end')
