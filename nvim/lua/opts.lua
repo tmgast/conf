@@ -39,12 +39,7 @@ endif
 
 autocmd BufEnter * syntax sync minlines=4000
 
-let s:uname = system("uname -s")
-if s:uname == "Darwin\n"
-  let g:python3_host_prog="/usr/bin/python3"
-else
-  let g:python3_host_prog="/bin/python3.10"
-endif
+let g:python3_host_prog="/usr/bin/python3"
 ]])
 
 vim.cmd([[colorscheme yokai]])

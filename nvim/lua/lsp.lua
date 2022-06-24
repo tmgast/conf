@@ -3,7 +3,7 @@ require("null-ls").setup({
         require("null-ls").builtins.completion.luasnip,
 
         require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.formatting.prettierd,
+        require("null-ls").builtins.formatting.prettier_d_slim,
 
         require("null-ls").builtins.diagnostics.eslint_d,
         require("null-ls").builtins.diagnostics.tsc,
