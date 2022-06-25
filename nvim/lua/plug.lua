@@ -1,6 +1,9 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin','~/.config/nvim/plugged')
 
+-- window control
+Plug 'mrjones2014/smart-splits.nvim'
+
 -- Indexing and search
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 

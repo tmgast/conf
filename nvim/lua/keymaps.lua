@@ -1,4 +1,5 @@
 local hydra = require('hydra')
+local splits = require('smart-splits')
 local dap = require('dap')
 local dapui = require('dapui')
 local jester = require('jester')
@@ -177,6 +178,26 @@ hydra({
       {'q', nil, { exit = true }},
       {'<ESC>', nil, { exit = true }}
     }
+})
+
+hydra({
+  name = "Split movements and resizing",
+  mode = 'n',
+  body = '<C-w>',
+  config = {
+    invoke_on_body = true,
+    timeout = 2500,
+  },
+  heads = {
+    { 'h', splits.move_cursor_left },
+    { 'j', splits.move_cursor_down },
+    { 'k', splits.move_cursor_up },
+    { 'l', splits.move_cursor_right },
+    { 'H', splits.resize_left },
+    { 'J', splits.resize_down },
+    { 'K', splits.resize_up },
+    { 'L', splits.resize_right },
+  },
 })
 
 return M
