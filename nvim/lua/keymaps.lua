@@ -1,4 +1,10 @@
+local hydra = require('hydra')
+local dap = require('dap')
+local dapui = require('dapui')
+local jester = require('jester')
 local silent = { silent = true }
+local nowait = { nowait = true }
+local snow = { silent = true, nowait = true }
 
 -- Ctrl jump between buffers
 vim.keymap.set('n', '<C-j>', '<cmd>bnext<CR>')
@@ -97,51 +103,80 @@ end
 
 vim.keymap.set('i', '~', '<Cmd>call copilot#Next()<CR>', silent)
 
-vim.keymap.set('n', '<leader>dc', require'dap'.continue, silent )
-vim.keymap.set('n', '<C-/>', require'dap'.step_over, silent )
-vim.keymap.set('n', '<C-.>', require'dap'.step_into, silent )
-vim.keymap.set('n', '<C-.>', require'dap'.step_back, silent )
-vim.keymap.set('n', '<C-,>', require'dap'.step_out, silent )
-vim.keymap.set('n', '<Leader>b', require'dap'.toggle_breakpoint, silent )
-vim.keymap.set('n', '<Leader>B', "<Cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", silent )
-vim.keymap.set('n', '<Leader>lp', "<Cmd> lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", silent )
-vim.keymap.set('n', '<Leader>dr', require'dap'.repl.open, silent )
 vim.keymap.set('n', '<Leader>dl', require'dap'.run_last, silent )
-vim.keymap.set('n', '<Leader>du', require'dapui'.toggle, silent )
-
-vim.keymap.set('n', '<Leader>tr', '<cmd>lua require"jester".run({dap = {console = ""}})<CR>', silent )
-vim.keymap.set('n', '<Leader>td', require'jester'.debug, silent )
-vim.keymap.set('n', '<Leader>tl', require'jester'.debug_last, silent )
-vim.keymap.set('n', '<Leader>tf', require'jester'.debug_file, silent )
-vim.keymap.set('n', '<Leader>i', require("dapui").eval, silent )
 
 vim.keymap.set("n", "<Leader>pi", "<cmd>PickIcons<cr>", silent )
 vim.keymap.set("i", "<C-i>", "<cmd>PickIconsInsert<cr>", silent )
 vim.keymap.set("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", silent )
 
-local Hydra = require('hydra')
-Hydra({
+hydra({
     name = "Debugger",
+    hint = [[
+
+     --- Movement ---   
+   _L_ - step out
+   _H_ - step into
+   _J_ - step over
+   _<space>_ - continue
+
+      --- Actions ---
+   _i_ - inspect
+   _U_ - toggle UI
+   _d_ - debug
+   _f_ - debug file
+   _r_ - debug last
+   _R_ - run
+
+      - Breakpoints -
+   _b_ - toggle breakpoint  
+   _B_ - set condition
+   _m_ - set log point
+
+
+       --- QUIT ---
+       _<ESC>_, _q_
+
+    ]],
     config = {
-      color = 'amaranth',
-      invoke_on_body = true
+      color = 'pink',
+      invoke_on_body = true,
+      hint = {
+         position = 'middle-right',
+         border = 'none'
+      },
+      on_enter = function()
+         vim.bo.modifiable = false
+      end,
+      on_exit = function()
+        vim.cmd 'echo'
+      end
     },
     mode = 'n',
     body = '<leader>d',
     heads = {
+      -- Inspect
+      {'i', dapui.eval, snow },
+      {'U', dapui.toggle, snow },
+
+      -- run (JEST)
+      {'d', jester.debug, nowait },
+      {'r', jester.debug_last, nowait },
+      {'R', jester.run, nowait },
+      {'f', jester.debug_file, nowait },
+
       -- Debugger movement
-      {'L', '<C-.>'},
-      {'J', '<C-/>'},
-      {'H', '<C-,>'},
+      {'L', dap.step_out, nowait },
+      {'J', dap.step_over, nowait },
+      {'H', dap.step_into, nowait },
+      {'<space>', dap.continue, nowait },
 
       -- Breakpoints
-      {'b','<leaderb>'},
-      {'B','<leader>B'},
-      {'m','<leader>lp'},
-
-      { '<Esc>', nil, { exit = true, nowait = true }},
-      { 'q',     nil , { exit = true, nowait = true }},
-    },
+      {'b', dap.toggle_breakpoint, nowait },
+      {'B', '<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', snow },
+      {'m', '<cmd>lua require("dap").set_breakpoint(nil, vim.fn.input("Log point message: "))<CR>', snow },
+      {'q', nil, { exit = true }},
+      {'<ESC>', nil, { exit = true }}
+    }
 })
 
 return M
