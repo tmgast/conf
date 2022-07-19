@@ -20,6 +20,7 @@ alias ga="git add ."
 alias gc="git commit -m"
 alias gp="git push"
 alias gr="git reset --hard HEAD"
+alias gf="git fetch origin 'refs/heads/*:refs/heads/*'"
 
 alias vii="vi ~/.config/nvim/init.vim"
 alias vil="vi ~/.config/nvim/conf.lua"

@@ -7,6 +7,7 @@ require'lline'
 require'opts'
 require'completion'
 require'refactor'
+require'vista'
 
 require('dressing').setup({})
 require("icon-picker")
@@ -71,8 +72,8 @@ prettier.setup({
 require("lsp-format").setup({})
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local navic = require("nvim-navic")
 require'ndap'
-
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
   on_attach = Keys.lsp_bindings,
@@ -93,7 +94,10 @@ require('lspconfig')['volar'].setup {
 require('lspconfig')['tsserver'].setup {
   root_dir = require('lspconfig').util.root_pattern("yarn.lock", "tsconfig.json", ".git"),
   capabilities = capabilities,
-  on_attach = Keys.lsp_bindings,
+  on_attach = function(client, bufnr)
+    Keys.lsp_bindings(client)
+    navic.attach(client, bufnr)
+  end,
   settings = {documentFormatting = true},
 }
 require('lspconfig')['vimls'].setup {

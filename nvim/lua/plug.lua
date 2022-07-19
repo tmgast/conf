@@ -72,6 +72,10 @@ Plug "ThePrimeagen/refactoring.nvim"
 Plug 'nvim-lualine/lualine.nvim'
 Plug ('akinsho/bufferline.nvim', { tag = 'v2.*' })
 
+-- LSP Context
+Plug "SmiteshP/nvim-navic"
+Plug 'liuchengxu/vista.vim'
+
 -- choice themes
 Plug('folke/tokyonight.nvim', { branch = 'main' })
 Plug 'rebelot/kanagawa.nvim'

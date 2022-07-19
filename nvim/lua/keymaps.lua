@@ -183,7 +183,7 @@ hydra({
 hydra({
   name = "Split movements and resizing",
   mode = 'n',
-  body = '<C-w>',
+  body = '<leader>w',
   config = {
     invoke_on_body = true,
     timeout = 2500,
