@@ -19,7 +19,6 @@ Plug 'rust-lang/rust.vim'
 -- colors
 Plug 'cocopon/iceberg.vim'
 Plug 'cocopon/pgmnt.vim'
-Plug 'cocopon/inspecthi.vim'
 Plug 'cocopon/colorswatch.vim'
 Plug 'rktjmp/lush.nvim'
 
