@@ -74,6 +74,11 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 local navic = require("nvim-navic")
 require'ndap'
+
+local luadev = require("lua-dev").setup({})
+local lspconfig = require('lspconfig')
+lspconfig.sumneko_lua.setup(luadev)
+
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,
   on_attach = Keys.lsp_bindings,
@@ -85,7 +90,7 @@ require('lspconfig')['html'].setup {
 require('lspconfig')['eslint'].setup{
   capabilities = capabilities,
   on_attach = Keys.lsp_bindings,
-  filetypes = {'javascript', 'javascriptreact'},
+  filetypes = {'javascript', 'javascriptreact', 'typescript'},
 }
 require('lspconfig')['volar'].setup {
   capabilities = capabilities,

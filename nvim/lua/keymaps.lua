@@ -107,7 +107,7 @@ vim.keymap.set('i', '~', '<Cmd>call copilot#Next()<CR>', silent)
 vim.keymap.set('n', '<Leader>dl', require'dap'.run_last, silent )
 
 vim.keymap.set("n", "<Leader>pi", "<cmd>PickIcons<cr>", silent )
-vim.keymap.set("i", "<C-i>", "<cmd>PickIconsInsert<cr>", silent )
+vim.keymap.set("i", "@@", "<cmd>PickIconsInsert<cr>", silent )
 vim.keymap.set("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", silent )
 
 hydra({

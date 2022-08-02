@@ -1,6 +1,7 @@
 vim.o.t_Co = 256
 vim.o.termguicolors = true
 vim.o.laststatus = 3
+vim.o.re=0
 vim.g.loaded_perl_provider = 0
 vim.o.exrc = true
 vim.o.errorbells = false
