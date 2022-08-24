@@ -60,8 +60,8 @@ vim.keymap.set('n', '<leader>,', '<cmd>cprevious<CR>')
 
 vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
 
-vim.keymap.set({"n","v","i"}, ';', ':')
-vim.keymap.set({"n","v","i"}, ';;', ';')
+vim.keymap.set({"n","v"}, ';', ':')
+vim.keymap.set({"n","v"}, ';;', ';')
 
 -- Find files using Telescope command-line sugar.
 vim.keymap.set('n', 'ff', '<cmd>Telescope find_files<CR>')
@@ -94,6 +94,7 @@ function M.lsp_bindings(client)
   vim.keymap.set('n', 'e.', vim.diagnostic.goto_next, { buffer = 0 })
   vim.keymap.set('n', 'e,', vim.diagnostic.goto_prev, { buffer = 0 })
   vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { buffer = 0 })
+  vim.keymap.set('n', '<leader>p', '<cmd>! ./deploy.sh<CR>', silent )
 
   -- remap to open the Telescope refactoring menu in visual mode
   vim.keymap.set('v', '<leader>r', require('telescope').extensions.refactoring.refactors)

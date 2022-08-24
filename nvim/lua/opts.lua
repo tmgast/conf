@@ -43,4 +43,5 @@ autocmd BufEnter * syntax sync minlines=4000
 let g:python3_host_prog="/usr/bin/python3"
 ]])
 
-vim.cmd([[colorscheme yokai]])
+vim.cmd([[colorscheme kanagawa]])
+vim.o.syn = 'on'

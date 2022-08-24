@@ -91,6 +91,7 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'github/copilot.vim'
 Plug 'anuvyklack/hydra.nvim'
 Plug 'anuvyklack/keymap-layer.nvim'
+Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' })
 
 -- Initialize plugin system
 vim.call('plug#end')
