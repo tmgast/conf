@@ -58,7 +58,9 @@ vim.keymap.set('n', '<leader>f', '<cmd>Prettier<CR>')
 vim.keymap.set('n', '<leader>.', '<cmd>cnext<CR>')
 vim.keymap.set('n', '<leader>,', '<cmd>cprevious<CR>')
 
-vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
+vim.keymap.set('i', ',,', '<Plug>(copilot-previous)', snow)
+vim.keymap.set('i', '..', '<Plug>(copilot-next)', snow)
+vim.keymap.set('i', '<leader><Tab>', 'copilot#Accept("")', { silent = true, expr = true, script = true })
 
 vim.keymap.set({"n","v"}, ';', ':')
 vim.keymap.set({"n","v"}, ';;', ';')

@@ -6,6 +6,7 @@ Plug 'mrjones2014/smart-splits.nvim'
 
 -- Indexing and search
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+Plug('nvim-treesitter/nvim-treesitter-context')
 
 -- lsp utility runner
 Plug 'jose-elias-alvarez/null-ls.nvim'

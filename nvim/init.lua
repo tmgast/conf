@@ -9,6 +9,7 @@ require'completion'
 require'refactor'
 require'vista'
 
+require('treesitter-context').setup{}
 require('dressing').setup({})
 require("icon-picker")
 
