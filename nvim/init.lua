@@ -9,6 +9,7 @@ require'completion'
 require'refactor'
 require'vista'
 
+require('tint').setup()
 require('treesitter-context').setup{}
 require('dressing').setup({})
 require("icon-picker")
@@ -79,6 +80,11 @@ require'ndap'
 local luadev = require("lua-dev").setup({})
 local lspconfig = require('lspconfig')
 lspconfig.sumneko_lua.setup(luadev)
+
+require'lspconfig'.prismals.setup{
+  capabilities = capabilities,
+  on_attach = Keys.lsp_bindings,
+}
 
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities,

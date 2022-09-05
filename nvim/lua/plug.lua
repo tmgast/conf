@@ -8,6 +8,10 @@ Plug 'mrjones2014/smart-splits.nvim'
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 Plug('nvim-treesitter/nvim-treesitter-context')
 
+-- LSP context
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'levouh/tint.nvim'
+
 -- lsp utility runner
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
@@ -23,8 +27,9 @@ Plug 'cocopon/pgmnt.vim'
 Plug 'cocopon/colorswatch.vim'
 Plug 'rktjmp/lush.nvim'
 
--- color-preview
+-- preview
 Plug 'norcalli/nvim-colorizer.lua'
+Plug('iamcco/markdown-preview.nvim', {['do'] = 'cd app && yarn install' })
 
 -- Fuzzy Finder
 Plug 'nvim-lua/popup.nvim'
@@ -43,12 +48,16 @@ Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'David-Kunz/jester'
 
 -- autoformat
+Plug 'tpope/vim-sleuth'
 Plug 'lukas-reineke/lsp-format.nvim'
 Plug 'MunifTanjim/prettier.nvim'
 
 -- better tree
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+
+-- Prisma
+Plug 'pantharshit00/vim-prisma'
 
 -- icon picker
 Plug 'stevearc/dressing.nvim'
