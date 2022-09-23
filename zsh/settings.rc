@@ -1,0 +1,9 @@
+SOURCE=${(%):-%x}
+source `dirname $SOURCE`/.alias
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+export LANG=en_US.UTF-8
+
+export PATH=~/.cargo/bin:$PATH
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(zoxide init zsh)"
