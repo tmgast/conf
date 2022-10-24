@@ -16,6 +16,9 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['|'] = cmp.mapping.confirm({ select = true }),
+    ['<leader><Tab>'] = cmp.mapping(function(fallback)
+      vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n', true)
+    end),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()

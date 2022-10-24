@@ -9,7 +9,7 @@ require'completion'
 require'refactor'
 require'vista'
 
-require('tint').setup()
+require('tint').setup{}
 require('treesitter-context').setup{}
 require('dressing').setup({})
 require("icon-picker")
@@ -36,7 +36,11 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
-require'nvim-tree'.setup {}
+require'nvim-tree'.setup {
+  view = {
+    width = 50,
+  }
+}
 local Keys = require'keymaps'
 
 prettier = require'prettier'
@@ -69,6 +73,11 @@ prettier.setup({
     "py",
   },
 })
+
+vim.o.winwidth = 10
+vim.o.winminwidth = 10
+vim.o.equalalways = false
+require('windows').setup{}
 
 -- Setup lspconfig.
 require("lsp-format").setup({})

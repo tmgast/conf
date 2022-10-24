@@ -60,7 +60,7 @@ vim.keymap.set('n', '<leader>,', '<cmd>cprevious<CR>')
 
 vim.keymap.set('i', ',,', '<Plug>(copilot-previous)', snow)
 vim.keymap.set('i', '..', '<Plug>(copilot-next)', snow)
-vim.keymap.set('i', '<leader><Tab>', 'copilot#Accept("")', { silent = true, expr = true, script = true })
+vim.keymap.set('i', '<Plug>(vimrc:copilot-dummy-map)', 'copilot#Accept("")', { silent = true, expr = true, script = true })
 
 vim.keymap.set({"n","v"}, ';', ':')
 vim.keymap.set({"n","v"}, ';;', ';')
@@ -112,6 +112,10 @@ vim.keymap.set('n', '<Leader>dl', require'dap'.run_last, silent )
 vim.keymap.set("n", "<Leader>pi", "<cmd>PickIcons<cr>", silent )
 vim.keymap.set("i", "@@", "<cmd>PickIconsInsert<cr>", silent )
 vim.keymap.set("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", silent )
+vim.keymap.set('n','<C-w>z','<cmd>WindowsMaximize<cr>', silent )
+vim.keymap.set('n','<C-w>_','<cmd>WindowsMaximizeVertically<cr>', silent )
+vim.keymap.set('n','<C-w>|','<cmd>WindowsMaximizeHorizontally<cr>', silent )
+vim.keymap.set('n','<C-w>=','<cmd>WindowsEqualize<cr>', silent )
 
 hydra({
     name = "Debugger",
