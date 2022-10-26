@@ -81,12 +81,12 @@ require('windows').setup{}
 
 -- Setup lspconfig.
 require("lsp-format").setup({})
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local navic = require("nvim-navic")
 require'ndap'
 
-local luadev = require("lua-dev").setup({})
+local luadev = require("neodev").setup({})
 local lspconfig = require('lspconfig')
 lspconfig.sumneko_lua.setup(luadev)
 
