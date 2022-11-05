@@ -74,6 +74,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'folke/neodev.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'amirali/yapf.nvim'
 
 -- refactoring
 Plug "ThePrimeagen/refactoring.nvim"

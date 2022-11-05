@@ -1,9 +1,12 @@
 SOURCE=${(%):-%x}
 source `dirname $SOURCE`/.alias
 
+export EDITOR='nvim'
+export VISUAL='nvim'
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 export LANG=en_US.UTF-8
 
-export PATH=~/.cargo/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/.local/bin:$PATH
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 eval "$(zoxide init zsh)"

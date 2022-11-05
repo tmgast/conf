@@ -43,18 +43,8 @@ require'nvim-tree'.setup {
 }
 local Keys = require'keymaps'
 
-prettier = require'prettier'
-prettier.setup({
-  ["null-ls"] = {
-    runtime_condition = function(params)
-      -- return false to skip running prettier
-      return true
-    end,
-    timeout = 5000,
-  }
-})
-
-prettier.setup({
+P = require'prettier'
+P.setup({
   bin = 'prettier', -- or `prettierd`
   filetypes = {
     "css",
@@ -72,6 +62,13 @@ prettier.setup({
     "yaml",
     "py",
   },
+  ["null-ls"] = {
+    runtime_condition = function(params)
+      -- return false to skip running prettier
+      return true
+    end,
+    timeout = 5000,
+  },
 })
 
 vim.o.winwidth = 10
@@ -86,9 +83,28 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 local navic = require("nvim-navic")
 require'ndap'
 
-local luadev = require("neodev").setup({})
+require('yapf').setup({})
+require("neodev").setup({})
 local lspconfig = require('lspconfig')
-lspconfig.sumneko_lua.setup(luadev)
+lspconfig.sumneko_lua.setup({
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      diagnostics = { globals = {'vim'} },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.stdpath('config') .. '/lua'] = true,
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+      },
+      completion = {
+        callSnippets = "Replace"
+      }
+    },
+    telemetry = { enable = false }
+  }
+})
 
 require'lspconfig'.prismals.setup{
   capabilities = capabilities,

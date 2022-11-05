@@ -4,6 +4,7 @@ require("null-ls").setup({
 
         require("null-ls").builtins.formatting.stylua,
         require("null-ls").builtins.formatting.prettier_d_slim,
+        require("null-ls").builtins.formatting.yapf,
 
 --        require("null-ls").builtins.diagnostics.eslint_d,
 
