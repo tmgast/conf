@@ -3,6 +3,7 @@ local splits = require('smart-splits')
 local dap = require('dap')
 local dapui = require('dapui')
 local jester = require('jester')
+local silicon = require('silicon')
 local silent = { silent = true }
 local nowait = { nowait = true }
 local snow = { silent = true, nowait = true }
@@ -116,6 +117,15 @@ vim.keymap.set('n','<C-w>z','<cmd>WindowsMaximize<cr>', silent )
 vim.keymap.set('n','<C-w>_','<cmd>WindowsMaximizeVertically<cr>', silent )
 vim.keymap.set('n','<C-w>|','<cmd>WindowsMaximizeHorizontally<cr>', silent )
 vim.keymap.set('n','<C-w>=','<cmd>WindowsEqualize<cr>', silent )
+
+-- Generate image of lines in a visual selection
+vim.keymap.set('v', '<Leader>s',  function() silicon.visualise_api({}) end )
+-- Generate image of a whole buffer, with lines in a visual selection highlighted
+vim.keymap.set('v', '<Leader>bs', function() silicon.visualise_api({to_clip = true, show_buf = true}) end )
+-- Generate visible portion of a buffer
+vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true, visible = true}) end )
+-- Generate current buffer line in normal mode
+vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true}) end )
 
 hydra({
     name = "Debugger",

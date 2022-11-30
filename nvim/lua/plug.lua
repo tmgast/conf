@@ -108,5 +108,8 @@ Plug "anuvyklack/middleclass"
 Plug "anuvyklack/animation.nvim"
 Plug "anuvyklack/windows.nvim"
 
+-- screenshot
+Plug  'narutoxy/silicon.lua'
+
 -- Initialize plugin system
 vim.call('plug#end')

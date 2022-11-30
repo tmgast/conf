@@ -8,6 +8,7 @@ require'opts'
 require'completion'
 require'refactor'
 require'vista'
+require'silicon-conf'
 
 require('tint').setup{}
 require('treesitter-context').setup{}
