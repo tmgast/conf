@@ -31,3 +31,6 @@ alias tmux="TERM=xterm-256color tmux"
 
 alias dcp="echo 'pausing containers' && docker container list -q | xargs docker container pause &>/dev/null"
 alias dcu="echo 'unpausing containers' && docker container list -q | xargs docker container unpause &>/dev/null"
+
+alias node14='export PATH="/usr/local/opt/node@14/bin:$PATH"'
+alias node16='export PATH="/usr/local/opt/node@16/bin:$PATH"'

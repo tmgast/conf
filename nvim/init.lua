@@ -72,11 +72,6 @@ P.setup({
   },
 })
 
-vim.o.winwidth = 10
-vim.o.winminwidth = 10
-vim.o.equalalways = false
-require('windows').setup{}
-
 -- Setup lspconfig.
 require("lsp-format").setup({})
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
