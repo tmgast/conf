@@ -102,7 +102,6 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'github/copilot.vim'
 Plug 'anuvyklack/hydra.nvim'
 Plug 'anuvyklack/keymap-layer.nvim'
-Plug('iamcco/markdown-preview.nvim', { ['do'] = 'cd app && yarn install' })
 
 Plug "anuvyklack/middleclass"
 Plug "anuvyklack/animation.nvim"

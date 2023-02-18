@@ -1,4 +1,5 @@
 *.old
+instaloader
 configstore
 .netrwhist
 github-copilot
