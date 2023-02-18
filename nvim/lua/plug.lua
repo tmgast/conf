@@ -103,10 +103,6 @@ Plug 'github/copilot.vim'
 Plug 'anuvyklack/hydra.nvim'
 Plug 'anuvyklack/keymap-layer.nvim'
 
-Plug "anuvyklack/middleclass"
-Plug "anuvyklack/animation.nvim"
-Plug "anuvyklack/windows.nvim"
-
 -- screenshot
 Plug  'narutoxy/silicon.lua'
 
