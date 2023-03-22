@@ -33,33 +33,15 @@ return {
     -- LSP Server Settings
     ---@type lspconfig.options
     servers = {
-      prismals = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      tsserver = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      pyright = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      html = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      eslint = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      volar = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      vimls = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      rls = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
-      jsonls = {
-        mason = false, -- set to false if you don't want this server to be installed with mason
-      },
+      prismals = {},
+      tsserver = {},
+      pyright = {},
+      html = {},
+      eslint = {},
+      volar = {},
+      vimls = {},
+      rls = {},
+      jsonls = {},
     },
     -- you can do any additional lsp server setup here
     -- return true if you don't want this server to be setup with lspconfig
