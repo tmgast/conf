@@ -9,3 +9,5 @@ opt.syn = "on"
 
 g.rustfmt_autosave = 1
 g.copilot_no_tab_map = true
+g.copilot_proxy_strict_ssl = false
+g.copilot_proxy = "163.116.197.35"
