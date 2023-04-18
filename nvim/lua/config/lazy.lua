@@ -14,6 +14,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "plugins" },
+    { "echasnovski/mini.pairs", enabled = false },
   },
   defaults = {
     lazy = false,

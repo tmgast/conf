@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
@@ -46,6 +47,7 @@ return {
         "luap",
         "markdown",
         "markdown_inline",
+        "prisma",
         "python",
         "query",
         "regex",

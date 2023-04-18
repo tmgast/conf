@@ -3,6 +3,11 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    colorscheme = "kanagawa"
-  }
+    colorscheme = "kanagawa",
+    transparent = true,
+    styles = {
+      sidebars = "transparent",
+      floats = "transparent",
+    },
+  },
 }
