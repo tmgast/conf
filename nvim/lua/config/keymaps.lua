@@ -20,3 +20,8 @@ map({ "i", "v" }, "jj", "<ESC>", { desc = "jj escape" })
 
 map("n", "<leader>.", "<cmd>cnext<cr>", { desc = "QF List: next" })
 map("n", "<leader>,", "<cmd>cprevious<cr>", { desc = "QF List: previous" })
+
+map("n", "E", vim.diagnostic.open_float)
+map("n", "e.", vim.diagnostic.goto_next)
+map("n", "e,", vim.diagnostic.goto_prev)
+map("n", "<leader>r", vim.lsp.buf.rename)
