@@ -42,8 +42,6 @@ return {
         "html",
         "javascript",
         "json",
-        "lua",
-        "luap",
         "markdown",
         "markdown_inline",
         "prisma",
