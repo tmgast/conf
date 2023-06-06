@@ -41,7 +41,7 @@ return {
       ---@type lspconfig.options
       servers = {
         prismals = {},
-        volar = {},
+        lua_ls = {},
         tsserver = {},
         pyright = {},
         html = {},
