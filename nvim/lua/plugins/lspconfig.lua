@@ -42,6 +42,7 @@ return {
       servers = {
         prismals = {},
         lua_ls = {},
+        dartls = { force = true },
         tsserver = {},
         pyright = {},
         html = {},
