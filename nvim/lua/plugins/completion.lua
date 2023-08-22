@@ -33,7 +33,7 @@ return {
         { name = "copilot" },
         -- { name = "luasnip" },
         -- { name = "buffer" },
-        { name = "path" },
+        -- { name = "path" },
       }),
       formatting = {
         format = function(_, item)

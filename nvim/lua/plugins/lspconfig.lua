@@ -3,7 +3,6 @@ return {
     "echasnovski/mini.pairs",
     enabled = false,
   },
-  { "liuchengxu/vista.vim" },
   { "SmiteshP/nvim-navic" },
   {
     "neovim/nvim-lspconfig",
