@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    version = false, -- last release is way too old and doesn't work on Windows
+    version = "v0.9.1", -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {

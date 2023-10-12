@@ -5,6 +5,8 @@ opt.laststatus = 0
 opt.re = 0
 opt.colorcolumn = "80,120"
 opt.completeopt = "menu,menuone,noselect"
+opt.pumheight = 6
+opt.pumwidth = 20
 opt.syn = "on"
 opt.background = "dark"
 
