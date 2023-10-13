@@ -12,3 +12,4 @@ opt.background = "dark"
 
 g.rustfmt_autosave = 1
 g.copilot_no_tab_map = true
+g.autoformat = true
