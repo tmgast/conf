@@ -49,6 +49,17 @@ return {
         vimls = {},
         rls = {},
         jsonls = {},
+        gdscript = {},
+        clangd = {
+          capabilities = {
+            offsetEncoding = "utf-16",
+          },
+          settings = {
+            clangd = {
+              arguments = { "-offset_encoding", "utf-8", "-compile-commands-dir=./.vscode" },
+            },
+          },
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
