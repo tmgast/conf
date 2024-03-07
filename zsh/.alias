@@ -36,3 +36,5 @@ alias dcu="echo 'unpausing containers' && docker container list -q | xargs docke
 alias node14='export PATH="/usr/local/opt/node@14/bin:$PATH"'
 alias node16='export PATH="/usr/local/opt/node@16/bin:$PATH"'
 alias node18='export PATH="/usr/local/opt/node@18/bin:$PATH"'
+
+alias run="cmd.exe /c"
