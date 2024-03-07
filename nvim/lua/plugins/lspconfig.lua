@@ -42,7 +42,22 @@ return {
         lua_ls = {},
         dartls = { force = true },
         tsserver = {},
-        pyright = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                autoImportCompletions = true,
+                diagnosticMode = "workspace",
+                typeCheckingMode = "off",
+                useLibraryCodeForTypes = true,
+                diagnosticSeverityOverrides = {
+                  reportInvalidTypeForm = "information",
+                },
+              },
+            },
+          },
+        },
         html = {},
         eslint = {},
         volar = {},
