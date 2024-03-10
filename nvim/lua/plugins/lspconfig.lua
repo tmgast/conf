@@ -15,7 +15,7 @@ return {
       {
         "hrsh7th/cmp-nvim-lsp",
         cond = function()
---          return require("lazyvim.util").has("nvim-cmp")
+          return require("lazyvim.util").has("nvim-cmp")
         end,
       },
     },
@@ -44,16 +44,18 @@ return {
         tsserver = {},
         pyright = {
           settings = {
-            python = {
-              analysis = {
-                autoSearchPaths = true,
-                autoImportCompletions = true,
-                diagnosticMode = "workspace",
-                typeCheckingMode = "off",
-                useLibraryCodeForTypes = true,
-                diagnosticSeverityOverrides = {
-                  reportInvalidTypeForm = "information",
-                },
+            disableLanguageServices = false,
+            disableOrganizeImports = false,
+          },
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              autoImportCompletions = true,
+              diagnosticMode = "workspace",
+              typeCheckingMode = "off",
+              useLibraryCodeForTypes = true,
+              diagnosticSeverityOverrides = {
+                reportInvalidTypeForm = "information",
               },
             },
           },

@@ -1,5 +1,10 @@
 return {
   "hrsh7th/nvim-cmp",
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+  },
   opts = function()
     local cmp = require("cmp")
     return {
@@ -32,10 +37,14 @@ return {
           entry_filter = function(entry)
             return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
           end,
+          max_item_count = 3,
+          group_index = 1,
         },
-        { name = "copilot" },
+        {
+          name = "copilot",
+          group_index = 2,
+        },
         -- { name = "luasnip" },
-        -- { name = "buffer" },
         -- { name = "path" },
       }),
       formatting = {
