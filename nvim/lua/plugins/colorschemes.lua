@@ -16,7 +16,7 @@ return {
     "svermeulen/text-to-colorscheme.nvim",
     opts = {
       ai = {
-        gpt_model = "gpt-3.5-turbo",
+        gpt_model = "gpt-4",
         openai_api_key = os.getenv("OPENAI_API_KEY"),
         green_darkening_amount = 0.65,
       },

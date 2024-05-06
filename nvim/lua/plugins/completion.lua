@@ -13,7 +13,7 @@ return {
       },
       snippet = {
         expand = function(args)
-          -- require("luasnip").lsp_expand(args.body)
+          require("luasnip").lsp_expand(args.body)
         end,
       },
       mapping = cmp.mapping.preset.insert({
@@ -24,6 +24,7 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<S-Tab>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ["<S-CR>"] = cmp.mapping.confirm({
