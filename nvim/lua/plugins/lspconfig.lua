@@ -41,7 +41,18 @@ return {
         prismals = {},
         lua_ls = {},
         dartls = { force = true },
-        tsserver = {},
+        tsserver = {
+          filetypes = { "javascript", "typescript", "vue" },
+          settings = {
+            typescript = {
+              suggest = {
+                completeJSDocs = true,
+                completeFunctionCalls = true,
+                includeAutomaticOptionalChainCompletions = true,
+              },
+            },
+          },
+        },
         pyright = {
           settings = {
             disableLanguageServices = false,
@@ -62,7 +73,14 @@ return {
         },
         html = {},
         eslint = {},
-        volar = {},
+        volar = {
+          filetypes = { "vue" },
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+        },
         vimls = {},
         rls = {},
         jsonls = {},
