@@ -1,3 +1,7 @@
+local ts_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+local tsdk = function()
+  return vim.fn.getcwd() .. "/node_modules/typescript/lib"
+end
 return {
   {
     "echasnovski/mini.pairs",
@@ -42,14 +46,27 @@ return {
         lua_ls = {},
         dartls = { force = true },
         tsserver = {
-          filetypes = { "javascript", "typescript", "vue" },
-          settings = {
+          filetypes = ts_ft,
+          init_options = {
             typescript = {
-              suggest = {
-                completeJSDocs = true,
-                completeFunctionCalls = true,
-                includeAutomaticOptionalChainCompletions = true,
+              tsdk = tsdk(),
+            },
+          },
+        },
+        volar = {
+          filetypes = { "vue" },
+          init_options = {
+            vue = {
+              hybridMode = false,
+              scss = {
+                enable = true,
               },
+              typescript = {
+                enable = true,
+              },
+            },
+            typescript = {
+              tsdk = tsdk(),
             },
           },
         },
@@ -73,14 +90,6 @@ return {
         },
         html = {},
         eslint = {},
-        volar = {
-          filetypes = { "vue" },
-          init_options = {
-            vue = {
-              hybridMode = false,
-            },
-          },
-        },
         vimls = {},
         rls = {},
         jsonls = {},
