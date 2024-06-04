@@ -51,6 +51,21 @@ return {
             "#ff9f43",
           },
         },
+        {
+          name = "vaporwave",
+          background_mode = "dark",
+          background = "#1a1832",
+          foreground = "#f7e8f5",
+          accents = {
+            "#6a4fa8",
+            "#b28df2",
+            "#3b6ea8",
+            "#8bd0f1",
+            "#f28bd1",
+            "#f9a1bc",
+            "#f9c1a8",
+          }
+        },
       },
       default_palette = "ghibli park",
     },
