@@ -31,6 +31,7 @@ return {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
+    opts_extend = {},
     ---@type TSConfig
     opts = {
       highlight = { enable = true, disable = { "vue" } },
