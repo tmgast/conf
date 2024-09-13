@@ -31,7 +31,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", enabled = false, opts = { experimental = { pathStrict = true } } },
+      { "folke/neodev.nvim",  enabled = false, opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       {
@@ -61,8 +61,16 @@ return {
       ---@type lspconfig.options
       servers = {
         prismals = {},
-        lua_ls = {},
         dartls = { force = true },
+        lua_ls = {
+          mason = false
+        },
+        luastyle = {
+          mason = false
+        },
+        ruff = {
+          mason = false
+        },
         tsserver = {
           filetypes = ts_ft,
           init_options = {
@@ -113,6 +121,7 @@ return {
         jsonls = {},
         gdscript = {},
         clangd = {
+          mason = false,
           capabilities = {
             offsetEncoding = "utf-16",
           },
