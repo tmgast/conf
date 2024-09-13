@@ -18,6 +18,7 @@ require("lazy").setup({
   },
   defaults = {
     lazy = false,
+    version = "*",
   },
   install = { colorscheme = { "kanagawa", "tokyonight" } },
   checker = { enabled = true }, -- automatically check for plugin updates

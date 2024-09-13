@@ -31,9 +31,10 @@ return {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
+    opts_extend = {},
     ---@type TSConfig
     opts = {
-      highlight = { enable = true },
+      highlight = { enable = true, disable = { "vue" } },
       indent = { enable = true, disable = { "python" } },
       context_commentstring = { enable = true, enable_autocmd = false },
       ensure_installed = {

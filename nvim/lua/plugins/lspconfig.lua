@@ -1,3 +1,7 @@
+local ts_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+local tsdk = function()
+  return vim.fn.getcwd() .. "/node_modules/typescript/lib"
+end
 return {
   {
     "echasnovski/mini.pairs",
@@ -5,11 +9,29 @@ return {
   },
   { "SmiteshP/nvim-navic" },
   {
+    "nvimtools/none-ls.nvim",
+    optional = true,
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, nls.builtins.formatting.black)
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        ["python"] = { "black" },
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      { "folke/neodev.nvim",  enabled = false, opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       {
@@ -39,18 +61,67 @@ return {
       ---@type lspconfig.options
       servers = {
         prismals = {},
-        lua_ls = {},
         dartls = { force = true },
-        tsserver = {},
-        pyright = {},
+        lua_ls = {
+          mason = false
+        },
+        luastyle = {
+          mason = false
+        },
+        ruff = {
+          mason = false
+        },
+        tsserver = {
+          filetypes = ts_ft,
+          init_options = {
+            typescript = {
+              tsdk = tsdk(),
+            },
+          },
+        },
+        volar = {
+          filetypes = { "vue" },
+          init_options = {
+            vue = {
+              hybridMode = false,
+              scss = {
+                enable = true,
+              },
+              typescript = {
+                enable = true,
+              },
+            },
+            typescript = {
+              tsdk = tsdk(),
+            },
+          },
+        },
+        pyright = {
+          settings = {
+            disableLanguageServices = false,
+            disableOrganizeImports = false,
+          },
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              autoImportCompletions = true,
+              diagnosticMode = "workspace",
+              typeCheckingMode = "off",
+              useLibraryCodeForTypes = true,
+              diagnosticSeverityOverrides = {
+                reportInvalidTypeForm = "information",
+              },
+            },
+          },
+        },
         html = {},
         eslint = {},
-        volar = {},
         vimls = {},
         rls = {},
         jsonls = {},
         gdscript = {},
         clangd = {
+          mason = false,
           capabilities = {
             offsetEncoding = "utf-16",
           },

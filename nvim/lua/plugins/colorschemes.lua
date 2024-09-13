@@ -16,7 +16,7 @@ return {
     "svermeulen/text-to-colorscheme.nvim",
     opts = {
       ai = {
-        gpt_model = "gpt-3.5-turbo",
+        gpt_model = "gpt-4",
         openai_api_key = os.getenv("OPENAI_API_KEY"),
         green_darkening_amount = 0.65,
       },
@@ -50,6 +50,21 @@ return {
             "#ff6b6b",
             "#ff9f43",
           },
+        },
+        {
+          name = "vaporwave",
+          background_mode = "dark",
+          background = "#1a1832",
+          foreground = "#f7e8f5",
+          accents = {
+            "#6a4fa8",
+            "#b28df2",
+            "#3b6ea8",
+            "#8bd0f1",
+            "#f28bd1",
+            "#f9a1bc",
+            "#f9c1a8",
+          }
         },
       },
       default_palette = "ghibli park",
