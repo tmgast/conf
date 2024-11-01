@@ -18,6 +18,16 @@ map("n", "<Tab>", "<cmd>bnext<cr>")
 map("n", "<S-Tab>", "<cmd>bprevious<cr>")
 map({ "i", "v" }, "jj", "<ESC>", { desc = "jj escape" })
 
+-- move bewteen splits using Alt + arrow keys
+map("n", "<C-A-h>", "<cmd>wincmd h<cr>")
+map("n", "<C-A-j>", "<cmd>wincmd j<cr>")
+map("n", "<C-A-k>", "<cmd>wincmd k<cr>")
+map("n", "<C-A-l>", "<cmd>wincmd l<cr>")
+map("n", "<C-A-Left>", "<cmd>wincmd h<cr>")
+map("n", "<C-A-Down>", "<cmd>wincmd j<cr>")
+map("n", "<C-A-Up>", "<cmd>wincmd k<cr>")
+map("n", "<C-A-Right>", "<cmd>wincmd l<cr>")
+
 map("n", "<leader>.", "<cmd>cnext<cr>", { desc = "QF List: next" })
 map("n", "<leader>,", "<cmd>cprevious<cr>", { desc = "QF List: previous" })
 
@@ -32,3 +42,7 @@ map("n", "<C-a>", "<cmd>T2CAddContrast -0.1<cr>")
 map("n", "<C-d>", "<cmd>T2CAddContrast 0.1<cr>")
 map("n", "<C-e>", "<cmd>T2CShuffleAccents<cr>")
 map("n", "<C-C>", ":T2CGenerate ")
+
+map("n", "<leader>R", ":SQLuaExecute<cr>", { desc = "Execute SQLua query" })
+map("n", ">", ":set<cr>/|[ ]*./e<cr>:noh<cr>:call histdel('/',-1)<cr>", { desc = "Jump to next DB column" })
+map("n", "<", "/|[ ]*./e<cr>NN:noh<cr>:call histdel('/',-2)<cr>", { desc = "Jump to previous DB column" })

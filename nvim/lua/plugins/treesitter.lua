@@ -55,6 +55,9 @@ return {
         "vimdoc",
         "yaml",
       },
+      ignore_install = {
+        "vtsls",
+      },
       incremental_selection = {
         enable = true,
         keymaps = {

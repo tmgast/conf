@@ -1,4 +1,4 @@
-local ts_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+local ts_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "ts" }
 local tsdk = function()
   return vim.fn.getcwd() .. "/node_modules/typescript/lib"
 end
@@ -22,7 +22,7 @@ return {
     optional = true,
     opts = {
       formatters_by_ft = {
-        ["python"] = { "black" },
+        ["python"] = { "ruff format %" },
       },
     },
   },
@@ -32,8 +32,8 @@ return {
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
       { "folke/neodev.nvim", enabled = false, opts = { experimental = { pathStrict = true } } },
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      { "mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim" },
       {
         "hrsh7th/cmp-nvim-lsp",
         cond = function()
@@ -60,6 +60,14 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
+        typescript = {
+          filetypes = ts_ft,
+          init_options = {
+            typescript = {
+              tsdk = tsdk(),
+            },
+          },
+        },
         prismals = {},
         lua_ls = {},
         dartls = { force = true },
@@ -71,20 +79,16 @@ return {
             },
           },
         },
+        ts_ls = {},
         volar = {
-          filetypes = { "vue" },
-          init_options = {
-            vue = {
-              hybridMode = false,
-              scss = {
-                enable = true,
+          -- filetypes = { "vue" },
+        },
+        cssls = {
+          settings = {
+            css = {
+              lint = {
+                unknownAtRules = "ignore",
               },
-              typescript = {
-                enable = true,
-              },
-            },
-            typescript = {
-              tsdk = tsdk(),
             },
           },
         },
@@ -99,7 +103,7 @@ return {
               autoImportCompletions = true,
               diagnosticMode = "workspace",
               typeCheckingMode = "off",
-              useLibraryCodeForTypes = true,
+              useLibraryCodeForTypes = false,
               diagnosticSeverityOverrides = {
                 reportInvalidTypeForm = "information",
               },
