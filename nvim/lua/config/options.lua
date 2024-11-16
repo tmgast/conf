@@ -1,7 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
-opt.laststatus = 0
+opt.laststatus = 3
 opt.re = 0
 opt.colorcolumn = "80,120"
 opt.completeopt = "menu,menuone,noselect"
