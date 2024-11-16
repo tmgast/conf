@@ -1,5 +1,10 @@
 return {
   {
+    "brenoprata10/nvim-highlight-colors",
+    lazy = false,
+    opts = {},
+  },
+  {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     lazy = false,
@@ -64,7 +69,7 @@ return {
             "#f28bd1",
             "#f9a1bc",
             "#f9c1a8",
-          }
+          },
         },
       },
       default_palette = "ghibli park",

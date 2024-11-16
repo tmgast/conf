@@ -1,4 +1,4 @@
-local ts_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" }
+local ts_ft = { "vue" }
 local tsdk = function()
   return vim.fn.getcwd() .. "/node_modules/typescript/lib"
 end
@@ -31,7 +31,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim",  enabled = false, opts = { experimental = { pathStrict = true } } },
+      { "folke/neodev.nvim", enabled = false, opts = { experimental = { pathStrict = true } } },
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       {
@@ -60,41 +60,20 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
+        volar = {},
+        denols = {
+          filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+        },
         prismals = {},
         dartls = { force = true },
         lua_ls = {
-          mason = false
+          mason = false,
         },
         luastyle = {
-          mason = false
+          mason = false,
         },
         ruff = {
-          mason = false
-        },
-        tsserver = {
-          filetypes = ts_ft,
-          init_options = {
-            typescript = {
-              tsdk = tsdk(),
-            },
-          },
-        },
-        volar = {
-          filetypes = { "vue" },
-          init_options = {
-            vue = {
-              hybridMode = false,
-              scss = {
-                enable = true,
-              },
-              typescript = {
-                enable = true,
-              },
-            },
-            typescript = {
-              tsdk = tsdk(),
-            },
-          },
+          mason = false,
         },
         pyright = {
           settings = {
@@ -115,7 +94,6 @@ return {
           },
         },
         html = {},
-        eslint = {},
         vimls = {},
         rls = {},
         jsonls = {},
