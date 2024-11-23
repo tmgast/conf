@@ -1,5 +1,10 @@
 return {
   {
+    "brenoprata10/nvim-highlight-colors",
+    lazy = false,
+    opts = {},
+  },
+  {
     "rebelot/kanagawa.nvim",
     priority = 1000,
     lazy = false,
@@ -21,6 +26,22 @@ return {
         green_darkening_amount = 0.65,
       },
       hex_palettes = {
+        {
+          name = "Gundam 001",
+          background_mode = "dark",
+          background = "#0c0d11",
+          foreground = "#ffffff",
+          accents = {
+            "#ff65a9",
+            "#65a9ff",
+            "#ffc265",
+            "#59e1ac",
+            "#c265ff",
+            "#ff6565",
+            "#59e159",
+          },
+        },
+
         {
           name = "ghibli park",
           background_mode = "dark",
@@ -67,7 +88,7 @@ return {
           },
         },
       },
-      default_palette = "vaporwave",
+      default_palette = "Gundam 001",
     },
   },
 }

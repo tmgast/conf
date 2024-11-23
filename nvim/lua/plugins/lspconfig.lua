@@ -69,7 +69,6 @@ return {
           },
         },
         prismals = {},
-        lua_ls = {},
         dartls = { force = true },
         tsserver = {
           filetypes = ts_ft,
@@ -92,6 +91,19 @@ return {
             },
           },
         },
+        denols = {
+          filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+        },
+        eslint = {},
+        lua_ls = {
+          mason = false,
+        },
+        luastyle = {
+          mason = false,
+        },
+        ruff = {
+          mason = false,
+        },
         pyright = {
           settings = {
             disableLanguageServices = false,
@@ -111,12 +123,12 @@ return {
           },
         },
         html = {},
-        eslint = {},
         vimls = {},
         rls = {},
         jsonls = {},
         gdscript = {},
         clangd = {
+          mason = false,
           capabilities = {
             offsetEncoding = "utf-16",
           },
