@@ -21,11 +21,27 @@ return {
     "svermeulen/text-to-colorscheme.nvim",
     opts = {
       ai = {
-        gpt_model = "gpt-4",
+        gpt_model = "gpt-4o",
         openai_api_key = os.getenv("OPENAI_API_KEY"),
         green_darkening_amount = 0.65,
       },
       hex_palettes = {
+        {
+          name = "Gundam 001",
+          background_mode = "dark",
+          background = "#0c0d11",
+          foreground = "#ffffff",
+          accents = {
+            "#ff65a9",
+            "#65a9ff",
+            "#ffc265",
+            "#59e1ac",
+            "#c265ff",
+            "#ff6565",
+            "#59e159",
+          },
+        },
+
         {
           name = "ghibli park",
           background_mode = "dark",
@@ -72,7 +88,7 @@ return {
           },
         },
       },
-      default_palette = "ghibli park",
+      default_palette = "Gundam 001",
     },
   },
 }

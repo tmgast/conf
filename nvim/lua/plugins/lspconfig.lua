@@ -62,8 +62,9 @@ return {
       servers = {
         volar = {},
         denols = {
-          filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+          filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
         },
+        eslint = {},
         prismals = {},
         dartls = { force = true },
         lua_ls = {
