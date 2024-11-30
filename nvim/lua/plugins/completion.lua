@@ -10,6 +10,9 @@ return {
     return {
       completion = {
         completeopt = "menu,menuone,noinsert",
+        autocomplete = {
+          trigger = "TextChanged",
+        },
       },
       snippet = {
         expand = function(args)
@@ -41,10 +44,6 @@ return {
           max_item_count = 12,
           group_index = 1,
         },
-        {
-          name = "copilot",
-          group_index = 2,
-        },
         -- { name = "luasnip" },
         -- { name = "path" },
       }),
@@ -57,6 +56,35 @@ return {
           end
           return item
         end,
+      },
+      matching = {
+        disallow_prefix_unmatching = true,
+      },
+      sorting = {
+        priority_weight = 2,
+        comparators = {
+          require("copilot_cmp.comparators").prioritize,
+          cmp.config.compare.offset,
+          -- cmp.config.compare.scopes,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.locality,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
+      window = {
+        completion = {
+          scrollbar = false,
+          scrolloff = 4,
+        },
+        documentation = {
+          max_width = 120,
+          max_height = 30,
+        },
       },
       experimental = {
         ghost_text = {

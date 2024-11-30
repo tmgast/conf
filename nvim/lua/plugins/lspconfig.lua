@@ -60,83 +60,23 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
-        typescript = {
-          filetypes = ts_ft,
-          init_options = {
-            typescript = {
-              tsdk = tsdk(),
-            },
-          },
-        },
-        prismals = {},
-        dartls = { force = true },
-        tsserver = {
-          filetypes = ts_ft,
-          init_options = {
-            typescript = {
-              tsdk = tsdk(),
-            },
-          },
-        },
-        ts_ls = {},
         volar = {
-          -- filetypes = { "vue" },
-        },
-        cssls = {
-          settings = {
-            css = {
-              lint = {
-                unknownAtRules = "ignore",
-              },
+          filetypes = { "vue" },
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+            diagnostics = {
+              script = true,
+              style = true,
+              template = true,
             },
           },
+          single_file_support = true,
         },
-        denols = {
-          filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-        },
-        eslint = {},
-        lua_ls = {
-          mason = false,
-        },
-        luastyle = {
-          mason = false,
-        },
-        ruff = {
-          mason = false,
-        },
-        pyright = {
-          settings = {
-            disableLanguageServices = false,
-            disableOrganizeImports = false,
-          },
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              autoImportCompletions = true,
-              diagnosticMode = "workspace",
-              typeCheckingMode = "off",
-              useLibraryCodeForTypes = false,
-              diagnosticSeverityOverrides = {
-                reportInvalidTypeForm = "information",
-              },
-            },
-          },
-        },
-        html = {},
-        vimls = {},
-        rls = {},
-        jsonls = {},
-        gdscript = {},
-        clangd = {
-          mason = false,
-          capabilities = {
-            offsetEncoding = "utf-16",
-          },
-          settings = {
-            clangd = {
-              arguments = { "-offset_encoding", "utf-8", "-compile-commands-dir=./.vscode" },
-            },
-          },
+        tsserver = {
+          filetypes = { "javascript", "typescript" },
+          single_file_support = true,
         },
       },
       -- you can do any additional lsp server setup here

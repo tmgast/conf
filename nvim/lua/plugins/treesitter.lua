@@ -49,7 +49,6 @@ return {
         "python",
         "query",
         "regex",
-        "tsx",
         "typescript",
         "vim",
         "vimdoc",
