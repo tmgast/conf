@@ -60,23 +60,25 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
-        volar = {
-          filetypes = { "vue" },
+        ts_ls = {
           init_options = {
-            vue = {
-              hybridMode = false,
-            },
-            diagnostics = {
-              script = true,
-              style = true,
-              template = true,
+            plugins = {
+              {
+                name = "@vue/typescript-plugin",
+                location = "/home/nendo/.config/yarn/global/node_modules/@vue/typescript-plugin",
+                languages = { "vue" },
+              },
             },
           },
-          single_file_support = true,
+          filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
+          },
         },
-        tsserver = {
-          filetypes = { "javascript", "typescript" },
-          single_file_support = true,
+        gdscript = {
+          name = "godot",
+          cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
         },
       },
       -- you can do any additional lsp server setup here

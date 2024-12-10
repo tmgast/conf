@@ -2,7 +2,7 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = false, -- set this if you want to always pull the latest change
+  version = "0.1.0",
   opts = {
     provider = "openai",
     auto_suggestions_provider = "copilot",
