@@ -37,6 +37,10 @@ return {
       {
         "hrsh7th/cmp-nvim-lsp",
         cond = function()
+          -- check if lazyvim is installed before requiring it
+          if not pcall(require, "lazyvim") then
+            return false
+          end
           return require("lazyvim.util").has("nvim-cmp")
         end,
       },
