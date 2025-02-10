@@ -44,10 +44,13 @@ keybind = global:ctrl+super+r=reload_config
 keybind = ctrl+s>v=new_split:right
 keybind = ctrl+s>s=new_split:down
 keybind = ctrl+x=close_surface
+
 keybind = ctrl+shift+up=resize_split:up,30
 keybind = ctrl+shift+down=resize_split:down,30
 keybind = ctrl+shift+left=resize_split:left,30
 keybind = ctrl+shift+right=resize_split:right,30
+keybind = ctrl+shift+z=toggle_split_zoom
+
 keybind = ctrl+opt+up=goto_split:up
 keybind = ctrl+opt+down=goto_split:down
 keybind = ctrl+opt+left=goto_split:left
