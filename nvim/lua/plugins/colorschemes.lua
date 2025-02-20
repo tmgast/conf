@@ -9,7 +9,7 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      colorscheme = "kanagawa",
+      colorscheme = "kanagawa-wave",
       transparent = true,
       styles = {
         sidebars = "transparent",
@@ -19,12 +19,16 @@ return {
   },
   {
     "svermeulen/text-to-colorscheme.nvim",
+    enabled = false,
     opts = {
       ai = {
         gpt_model = "gpt-4o",
         openai_api_key = os.getenv("OPENAI_API_KEY"),
         green_darkening_amount = 0.65,
       },
+      invert_tabline = true,
+      invert_intend_guides = true,
+      transparent_mode = true,
       hex_palettes = {
         {
           name = "Gundam 001",
@@ -88,7 +92,6 @@ return {
           },
         },
       },
-      default_palette = "Gundam 001",
     },
   },
 }

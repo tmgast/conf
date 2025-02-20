@@ -69,7 +69,7 @@ return {
             plugins = {
               {
                 name = "@vue/typescript-plugin",
-                location = "/home/nendo/.config/yarn/global/node_modules/@vue/typescript-plugin",
+                location = "/Users/t_gasst/.config/yarn/global/node_modules/@vue/typescript-plugin",
                 languages = { "vue" },
               },
             },

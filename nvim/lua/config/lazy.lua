@@ -7,7 +7,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
-    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "text-to-colorscheme" } },
+    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "kanagawa-wave" } },
     { "rcarriga/nvim-notify" },
     { import = "lazyvim.plugins.extras.ai.copilot" },
     { import = "plugins" },
