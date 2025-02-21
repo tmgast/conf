@@ -13,7 +13,11 @@ background-blur-radius = 20
 unfocused-split-opacity = 0.65
 unfocused-split-fill = #2A1E2F
 
-font-family = "VictorMono NFM Regular"
+font-family = "VictorMono Nerd Font Mono"
+font-style = "Medium"
+font-style-bold = "Bold"
+font-style-italic = "Medium Italic"
+font-style-bold-italic = "Bold Italic"
 
 theme = Kanagawa Wave
 minimum-contrast = 0.9
