@@ -7,7 +7,7 @@ window-save-state = always
 window-padding-x = 12
 window-padding-y = 12
 
-background-opacity = 0.97
+background-opacity = 0.92
 background-blur = true
 background-blur-radius = 20
 unfocused-split-opacity = 0.65
@@ -54,10 +54,10 @@ keybind = ctrl+s>v=new_split:right
 keybind = ctrl+s>s=new_split:down
 keybind = ctrl+x=close_surface
 
-keybind = ctrl+shift+up=resize_split:up,30
-keybind = ctrl+shift+down=resize_split:down,30
-keybind = ctrl+shift+left=resize_split:left,30
-keybind = ctrl+shift+right=resize_split:right,30
+keybind = ctrl+cmd+up=resize_split:up,30
+keybind = ctrl+cmd+down=resize_split:down,30
+keybind = ctrl+cmd+left=resize_split:left,30
+keybind = ctrl+cmd+right=resize_split:right,30
 keybind = ctrl+shift+z=toggle_split_zoom
 
 keybind = ctrl+alt+up=goto_split:up

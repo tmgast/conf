@@ -84,6 +84,12 @@ return {
           name = "godot",
           cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
         },
+        clangd = {
+          cmd = {
+            "clangd",
+            "--background-index",
+          },
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
