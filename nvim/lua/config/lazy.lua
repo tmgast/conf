@@ -7,9 +7,10 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
   spec = {
+    { "nvim-lualine/lualine.nvim", enabled = false },
+    { "MunifTanjim/nougat.nvim" },
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "kanagawa-wave" } },
     { "rcarriga/nvim-notify" },
-    { import = "lazyvim.plugins.extras.ai.copilot" },
     { import = "plugins" },
     { "echasnovski/mini.pairs", enabled = false },
   },

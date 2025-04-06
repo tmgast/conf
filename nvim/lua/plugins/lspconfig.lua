@@ -34,16 +34,6 @@ return {
       { "folke/neodev.nvim", enabled = false, opts = { experimental = { pathStrict = true } } },
       { "mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
-      {
-        "hrsh7th/cmp-nvim-lsp",
-        cond = function()
-          -- check if lazyvim is installed before requiring it
-          if not pcall(require, "lazyvim") then
-            return false
-          end
-          return require("lazyvim.util").has("nvim-cmp")
-        end,
-      },
     },
     opts = {
       -- options for vim.diagnostic.config()
@@ -64,12 +54,14 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
+        volar = {},
         ts_ls = {
           init_options = {
             plugins = {
               {
                 name = "@vue/typescript-plugin",
-                location = "/Users/t_gasst/.config/yarn/global/node_modules/@vue/typescript-plugin",
+                location = vim.fn.stdpath("data")
+                  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
                 languages = { "vue" },
               },
             },
