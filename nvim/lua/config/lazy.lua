@@ -13,6 +13,13 @@ require("lazy").setup({
     { "rcarriga/nvim-notify" },
     { import = "plugins" },
     { "echasnovski/mini.pairs", enabled = false },
+    {
+      "zbirenbaum/copilot.lua",
+      optional = true,
+      opts = function()
+        require("copilot.api").status = require("copilot.status")
+      end,
+    },
   },
   defaults = {
     lazy = false,

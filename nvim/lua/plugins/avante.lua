@@ -4,6 +4,9 @@ return {
   lazy = false,
   opts = {
     provider = "openai",
+    openai = {
+      model = "gpt-4.1",
+    },
   },
   dependencies = {
     "stevearc/dressing.nvim",

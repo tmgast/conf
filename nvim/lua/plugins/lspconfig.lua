@@ -55,6 +55,9 @@ return {
       ---@type lspconfig.options
       servers = {
         volar = {},
+        eslint = {
+          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        },
         ts_ls = {
           init_options = {
             plugins = {
