@@ -3,9 +3,12 @@ return {
   event = "VeryLazy",
   lazy = false,
   opts = {
+    mode = "legacy",
     provider = "openai",
-    openai = {
-      model = "gpt-4.1",
+    providers = {
+      openai = {
+        model = "gpt-4.1",
+      },
     },
   },
   dependencies = {

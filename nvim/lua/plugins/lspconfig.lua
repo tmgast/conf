@@ -1,8 +1,28 @@
-local ts_ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "ts" }
-local tsdk = function()
-  return vim.fn.getcwd() .. "/node_modules/typescript/lib"
-end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
 return {
+  {
+    "saghen/blink.cmp",
+    opts = function(_, opts)
+      opts.keymap = {
+        preset = "default",
+        ["<CR>"] = {},
+        ["<S-CR>"] = { "select_and_accept", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+      }
+
+      opts.completion = opts.completion or {}
+      opts.completion.list = opts.completion.list or {}
+      opts.completion.list.selection = {
+        preselect = false, -- Do not preselect
+        auto_insert = false, -- Do not auto insert
+      }
+      return opts
+    end,
+  },
   {
     "echasnovski/mini.pairs",
     enabled = false,
@@ -54,10 +74,19 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
-        volar = {},
-        eslint = {
-          filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        volar = {
+          on_attach = function(client, bufnr)
+            -- Disable formatting capability for Volar to prevent slowness on save
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
         },
+        vtsls = {},
+
+        eslint = {
+          filetypesg = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        },
+
         ts_ls = {
           init_options = {
             plugins = {
@@ -69,16 +98,14 @@ return {
               },
             },
           },
-          filetypes = {
-            "javascript",
-            "typescript",
-            "vue",
-          },
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         },
+
         gdscript = {
           name = "godot",
           cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
         },
+
         clangd = {
           cmd = {
             "clangd",
@@ -86,6 +113,7 @@ return {
           },
         },
       },
+
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
@@ -95,6 +123,7 @@ return {
         --   require("typescript").setup({ server = opts })
         --   return true
         -- end,
+        --
         -- Specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
       },
