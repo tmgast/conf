@@ -55,78 +55,43 @@ return {
       { "mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
     },
-    opts = {
-      -- options for vim.diagnostic.config()
-      diagnostics = {
-        underline = true,
-        update_in_insert = false,
-        virtual_text = { spacing = 4, prefix = "●" },
-        severity_sort = true,
-      },
-      -- Automatically format on save
-      -- options for vim.lsp.buf.format
-      -- `bufnr` and `filter` is handled by the LazyVim formatter,
-      -- but can be also overridden when specified
-      format = {
-        formatting_options = nil,
-        timeout_ms = nil,
-      },
-      -- LSP Server Settings
-      ---@type lspconfig.options
-      servers = {
-        volar = {
-          on_attach = function(client, bufnr)
-            -- Disable formatting capability for Volar to prevent slowness on save
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end,
-        },
-        vtsls = {},
+    opts = function(_, opts)
+      local util = require("lspconfig.util")
 
-        eslint = {
-          filetypesg = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-        },
+      -- helper: detect Vue/Nuxt tree by dev-config files
+      local function is_vue_project(fname)
+        return util.root_pattern("nuxt.config.ts", "nuxt.config.js", "vue.config.js")(fname)
+      end
 
-        ts_ls = {
-          init_options = {
-            plugins = {
-              {
-                name = "@vue/typescript-plugin",
-                location = vim.fn.stdpath("data")
-                  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-                languages = { "vue" },
-              },
-            },
-          },
-          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-        },
+      -- make sure we have a setup table
+      opts.setup = opts.setup or {}
 
-        gdscript = {
-          name = "godot",
-          cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
-        },
+      -- 1) only start Volar in Vue/Nuxt projects
+      opts.setup["volar"] = function(server, volar_opts)
+        if not is_vue_project(vim.loop.cwd()) then
+          -- skip default volar.setup()
+          return true
+        end
+        -- else fall through and let LazyVim do the normal volar setup
+      end
 
-        clangd = {
-          cmd = {
-            "clangd",
-            "--background-index",
-          },
-        },
-      },
+      -- 2) only start ts_ls in non-Vue projects
+      opts.setup["ts_ls"] = function(server, ts_opts)
+        if is_vue_project(vim.loop.cwd()) then
+          -- skip default ts_ls.setup()
+          return true
+        end
+        -- else normal ts_ls setup
+      end
 
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-      setup = {
-        -- example to setup with typescript.nvim
-        -- tsserver = function(_, opts)
-        --   require("typescript").setup({ server = opts })
-        --   return true
-        -- end,
-        --
-        -- Specify * to use this function as a fallback for any server
-        -- ["*"] = function(server, opts) end,
-      },
-    },
+      -- 3) if you still have vtsls around, you can also disable it in pure-TS
+      opts.setup["vtsls"] = function(server, vtsls_opts)
+        if not is_vue_project(vim.loop.cwd()) then
+          return true
+        end
+      end
+
+      return opts
+    end,
   },
 }
