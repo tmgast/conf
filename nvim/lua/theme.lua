@@ -40,6 +40,8 @@ function M.setup(config)
     style = "dark",
     blend_factor = 0.5,
     colors = {
+      light = "#eeeeee",
+      dark = "#111111",
       base = "#1e1e2e",
       keyword = "#c678dd",
       variable = "#8ec07c",
@@ -49,16 +51,22 @@ function M.setup(config)
     },
   }, config or {})
 
-  local bg0 = (config.style == "dark") and "#111111" or "#eeeeee"
-  local fg0 = (config.style == "dark") and "#eeeeee" or "#111111"
+  local bg0 = (config.style == "dark") and config.colors.dark or config.colors.light
+  local fg0 = (config.style == "dark") and config.colors.light or config.colors.dark
   local mp0 = "#888888"
-  local blend_to = bg0 -- for comments & bg
   local bf = config.blend_factor
 
   -- derived colors
+  local fg = blend(fg0, config.colors.text, bf * 0.2)
+  local bg = blend(bg0, config.colors.base, bf * 0.2)
   local comment_fg = blend(config.colors.base, mp0, 0.45)
-  local bg = blend(blend_to, config.colors.base, 0.25)
-  local fg = blend(fg0, config.colors.text, bf)
+  local blends = {
+    keyword = blend(config.colors.keyword, fg, config.blend_factor * 0.5),
+    variable = blend(config.colors.variable, fg, config.blend_factor * 0.5),
+    attribute = blend(config.colors.attribute, fg, config.blend_factor * 0.5),
+    text = blend(config.colors.text, fg, config.blend_factor * 0.5),
+    digit = blend(config.colors.digit, fg, config.blend_factor * 0.5),
+  }
 
   -- core syntax groups
   local groups = {
@@ -69,15 +77,15 @@ function M.setup(config)
 
     -- syntax
     Comment = { fg = comment_fg, italic = true },
-    Keyword = { fg = config.colors.keyword, italic = true, bold = true },
-    Identifier = { fg = config.colors.variable },
-    Function = { fg = config.colors.variable },
+    Keyword = { fg = blends.keyword, italic = true, bold = true },
+    Identifier = { fg = blends.variable },
+    Function = { fg = blend(config.colors.variable, fg, 0.3) },
     Statement = { fg = config.colors.keyword },
-    Type = { fg = config.colors.attribute },
-    Constant = { fg = config.colors.digit },
-    String = { fg = blend(config.colors.base, "#99ff99", 0.6) },
-    Number = { fg = config.colors.digit },
-    Operator = { fg = config.colors.keyword },
+    Type = { fg = blend(config.colors.attribute, fg, 0.3) },
+    Constant = { fg = blend(config.colors.variable, fg, 0.75) },
+    String = { fg = blend(config.colors.base, "#aaffaa", 0.6) },
+    Number = { fg = blends.digit },
+    Operator = { fg = blends.keyword },
 
     -- LSP diagnostics
     DiagnosticError = { fg = config.colors.digit },
@@ -86,7 +94,10 @@ function M.setup(config)
     DiagnosticHint = { fg = config.colors.variable },
 
     -- underline errors/warnings
-    DiagnosticUnderlineError = { undercurl = true, sp = config.colors.digit },
+    DiagnosticUnderlineError = {
+      undercurl = true,
+      sp = blend(config.colors.digit, config.colors.base, bf),
+    },
     DiagnosticUnderlineWarn = { undercurl = true, sp = config.colors.attribute },
 
     -- LSP references

@@ -18,8 +18,10 @@ return {
         -- your theme setup:
         require("theme").setup({
           style = "dark", -- or "light"
-          blend_factor = 0.2,
+          blend_factor = 0.1,
           colors = {
+            light = "#f0f0f0",
+            dark = "#101018",
             base = "#1e293b",
             keyword = "#818cf8",
             variable = "#a78bfa",
