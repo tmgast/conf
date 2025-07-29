@@ -1,29 +1,28 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 
-local filter_dts = function(err, result, ctx, config)
+local filter_dts = function(err, result, ctx, cfg)
   if not result then
-    return
+    return vim.lsp.handlers["textDocument/definition"](err, result, ctx, cfg)
   end
-  -- turn single Location into a list, so we can filter uniformly
+
+  -- use the built-in is_list helper
   local is_list = vim.lsp.util.is_list(result)
   local items = is_list and result or { result }
 
-  -- drop anything whose URI ends in .d.ts
+  -- keep only entries whose URI or targetUri does NOT end in .d.ts
   local filtered = vim.tbl_filter(function(item)
-    return not item.uri:match("%.d.ts$")
+    local uri = item.uri or item.targetUri or ""
+    return not uri:match("%.d.ts$")
   end, items)
 
-  -- if nothing left, fall back to the original (so you still jump somewhere)
-  local to_send = #filtered > 0 and filtered or items
-
-  -- if it was a single Location originally, unwrap it
-  if not is_list then
-    to_send = to_send[1]
+  -- if we filtered everything away, fall back to original
+  if vim.tbl_isempty(filtered) then
+    filtered = items
   end
 
-  -- forward to the default handler
-  vim.lsp.handlers["textDocument/definition"](err, to_send, ctx, config)
+  local to_send = is_list and filtered or filtered[1]
+  return vim.lsp.handlers["textDocument/definition"](err, to_send, ctx, cfg)
 end
 
 return {
@@ -101,10 +100,14 @@ return {
 
       local util = require("lspconfig.util")
       local is_vue_project = util.root_pattern("nuxt.config.ts", "nuxt.config.js", "vue.config.js")
+      local function package_root(fname)
+        local root = vim.fs.dirname(vim.fs.find("package.json", { path = fname, upward = true })[1] or fname)
+        return root
+      end
 
       -- only start Volar in Vue/Nuxt roots
       opts.setup["volar"] = function(_, volar_opts)
-        if is_vue_project(volar_opts.root_dir) then
+        if is_vue_project(package_root(volar_opts.root_dir)) then
           return true
         end
 
@@ -114,7 +117,7 @@ return {
 
       -- only start tsserver in non-Vue roots
       opts.setup["ts_ls"] = function(_, ts_opts)
-        if not is_vue_project(ts_opts.root_dir) then
+        if not is_vue_project(package_root(ts_opts.root_dir)) then
           return true
         end
 
@@ -124,7 +127,7 @@ return {
 
       -- only start vtsls in Vue roots
       opts.setup["vtsls"] = function(_, vtsls_opts)
-        if not is_vue_project(vtsls_opts.root_dir) then
+        if not is_vue_project(package_root(vtsls_opts.root_dir)) then
           return true
         end
       end
