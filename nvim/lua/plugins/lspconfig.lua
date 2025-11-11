@@ -51,7 +51,7 @@ return {
   },
 
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     enabled = false,
   },
 
@@ -93,21 +93,21 @@ return {
         opts = { experimental = { pathStrict = true } },
       },
       "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
     },
     opts = function(_, opts)
       opts.setup = opts.setup or {}
 
       local util = require("lspconfig.util")
-      local is_vue_project = util.root_pattern("nuxt.config.ts", "nuxt.config.js", "vue.config.js")
-      local function package_root(fname)
-        local root = vim.fs.dirname(vim.fs.find("package.json", { path = fname, upward = true })[1] or fname)
-        return root
+      -- 3) Detect Vue/Nuxt by looking upward for one of these files
+      local function is_vue_project(fname)
+        return vim.fs.find({ "nuxt.config.ts", "nuxt.config.js", "vue.config.js" }, { path = fname, upward = true })[1]
+          ~= nil
       end
 
       -- only start Volar in Vue/Nuxt roots
       opts.setup["volar"] = function(_, volar_opts)
-        if is_vue_project(package_root(volar_opts.root_dir)) then
+        if is_vue_project(volar_opts.root_dir) then
           return true
         end
 
@@ -117,17 +117,13 @@ return {
 
       -- only start tsserver in non-Vue roots
       opts.setup["ts_ls"] = function(_, ts_opts)
-        if not is_vue_project(package_root(ts_opts.root_dir)) then
-          return true
-        end
-
         ts_opts.handlers = ts_opts.handlers or {}
         ts_opts.handlers["textDocument/definition"] = filter_dts
       end
 
       -- only start vtsls in Vue roots
       opts.setup["vtsls"] = function(_, vtsls_opts)
-        if not is_vue_project(package_root(vtsls_opts.root_dir)) then
+        if is_vue_project(vtsls_opts.root_dir) then
           return true
         end
       end

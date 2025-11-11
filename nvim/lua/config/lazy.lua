@@ -12,9 +12,10 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "kanagawa-wave" } },
     { "rcarriga/nvim-notify" },
     { import = "plugins" },
-    { "echasnovski/mini.pairs", enabled = false },
+    { "nvim-mini/mini.pairs", enabled = false },
     {
       "zbirenbaum/copilot.lua",
+      enabled = true,
       optional = true,
       opts = function()
         require("copilot.api").status = require("copilot.status")
