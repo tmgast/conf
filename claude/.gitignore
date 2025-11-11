@@ -1,0 +1,19 @@
+# Runtime state directories
+debug/
+file-history/
+projects/
+session-env/
+shell-snapshots/
+statsig/
+todos/
+
+# Runtime files
+history.jsonl
+.update.lock
+
+# System-specific configuration
+.mcp.json
+settings.local.json
+
+# Agent directory (typically managed by Claude)
+agents/
