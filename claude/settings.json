@@ -1,0 +1,22 @@
+{
+  "includeCoAuthoredBy": false,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/auto-lint.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "chmod +x ~/.claude/scripts/statusline.sh && ~/.claude/scripts/statusline.sh",
+    "padding": 0
+  },
+  "alwaysThinkingEnabled": true
+}

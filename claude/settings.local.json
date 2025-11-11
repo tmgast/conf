@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(claude config list:*)",
+      "Bash(claude doctor)",
+      "Bash(claude config --help)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
