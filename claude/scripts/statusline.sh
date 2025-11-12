@@ -53,7 +53,7 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
         fi
     fi
 
-    GIT_STATUS="${GIT_COLOR}${BRANCH}${GIT_SYMBOL}${AHEAD_BEHIND}"
+    GIT_STATUS="${GIT_COLOR}${BRANCH} ${GIT_SYMBOL}${AHEAD_BEHIND}"
 fi
 
 # Check project health (lint/type errors) - simplified for speed
