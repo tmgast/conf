@@ -46,3 +46,7 @@ map("n", "<C-C>", ":T2CGenerate ")
 map("n", "<leader>R", ":SQLuaExecute<cr>", { desc = "Execute SQLua query" })
 map("n", ">", ":set<cr>/|[ ]*./e<cr>:noh<cr>:call histdel('/',-1)<cr>", { desc = "Jump to next DB column" })
 map("n", "<", "/|[ ]*./e<cr>NN:noh<cr>:call histdel('/',-2)<cr>", { desc = "Jump to previous DB column" })
+
+-- goto definition in a split
+map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Goto Definition in split" })
+map("n", "gD", "<cmd>split | lua vim.lsp.buf.definition()<cr>", { desc = "Goto Definition in split" })
