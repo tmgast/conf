@@ -19,6 +19,10 @@
     "command": "~/.claude/scripts/statusline.sh",
     "padding": 0
   },
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true
+  },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754436584918
