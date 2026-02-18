@@ -6,10 +6,14 @@ session-env/
 shell-snapshots/
 statsig/
 todos/
+cache/
+paste-cache/
+plans/
 
 # Runtime files
 history.jsonl
 .update.lock
+stats-cache.json
 
 # System-specific configuration
 .mcp.json
@@ -17,3 +21,7 @@ settings.local.json
 
 # Agent directory (typically managed by Claude)
 agents/
+
+# Plugin runtime data (fetched on demand)
+plugins/marketplaces/
+plugins/known_marketplaces.json
