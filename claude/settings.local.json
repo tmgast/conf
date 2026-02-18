@@ -5,7 +5,11 @@
       "WebFetch(domain:github.com)",
       "Bash(claude config list:*)",
       "Bash(claude doctor)",
-      "Bash(claude config --help)"
+      "Bash(claude config --help)",
+      "Bash(xargs:*)",
+      "mcp__tree-sitter-mcp__search_code",
+      "Bash(./gradlew compileDebugKotlin:*)",
+      "Bash(./gradlew :app:testDebugUnitTest:*)"
     ],
     "deny": [],
     "ask": []
