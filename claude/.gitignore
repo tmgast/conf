@@ -9,11 +9,29 @@ todos/
 cache/
 paste-cache/
 plans/
+backups/
+daemon/
+feedback/
+image-cache/
+jobs/
+sessions/
+downloads/
+ide/
+__pycache__/
 
 # Runtime files
 history.jsonl
 .update.lock
 stats-cache.json
+.last-cleanup
+.last-update-result.json
+daemon.lock
+daemon.log
+daemon.status.json
+gh-pr-status-cache.json
+policy-limits.json
+remote-settings.json
+*.bak
 
 # System-specific configuration
 .mcp.json
@@ -25,3 +43,6 @@ agents/
 # Plugin runtime data (fetched on demand)
 plugins/marketplaces/
 plugins/known_marketplaces.json
+plugins/installed_plugins.json
+plugins/blocklist.json
+plugins/.last_inuse_sweep

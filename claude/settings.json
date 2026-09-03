@@ -1,7 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "includeCoAuthoredBy": false,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/no-shell-edits.py"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write|MultiEdit",
@@ -9,6 +24,40 @@
           {
             "type": "command",
             "command": "~/.claude/scripts/auto-lint.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/no-trash-comments.py"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/t_gasst/.local/share/nvim/lazy/cairn.nvim/server/cairn-server --drain-queue"
+          },
+          {
+            "type": "command",
+            "command": "jq -n --rawfile body /Users/t_gasst/.claude/injected/turn-rules.md '{hookSpecificOutput:{hookEventName:\"UserPromptSubmit\",additionalContext:$body}}' 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -n --rawfile body /Users/t_gasst/.claude/skills/unslop/SKILL.md '{hookSpecificOutput:{hookEventName:\"SessionStart\",additionalContext:(\"The unslop skill is in force for this session and every reply in it. Its full text is below; treat it as already loaded. Do not invoke the unslop skill again.\\n\\n\" + $body)}}' 2>/dev/null || true",
+            "statusMessage": "Loading unslop"
+          },
+          {
+            "type": "command",
+            "command": "jq -n --rawfile body /Users/t_gasst/.claude/injected/tool-rules.md '{hookSpecificOutput:{hookEventName:\"SessionStart\",additionalContext:$body}}' 2>/dev/null || true",
+            "statusMessage": "Loading tool rules"
           }
         ]
       }
@@ -21,11 +70,21 @@
   },
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Shell commands that modify repository files in place: sed -i, perl -pi, heredoc or tee redirection into source paths, python or perl one-liners that write. The Edit and Write tools are the sanctioned path unless the user explicitly asked for a shell edit."
+    ]
+  },
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754436584918
   },
-  "effortLevel": "medium"
+  "model": "claude-fable-5-1[1m]"
 }
